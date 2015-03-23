@@ -1,0 +1,25 @@
+{
+	"curly": true,
+	"eqeqeq": true,
+	"immed": false,
+	"latedef": true,
+	"newcap": true,
+	"noarg": true,
+	"sub": true,
+	"undef": true,
+	"unused": "vars",
+	"boss": true,
+	"eqnull": true,
+	"browser": true,
+	"noempty": true,
+	"trailing": true,
+	"globals": {
+		"module": true,
+		"require": true,
+		"$": true,
+		"console": true,
+		"_": true,
+		"Backbone": true,
+		"tpl": true
+	}
+}
