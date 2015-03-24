@@ -1,14 +1,21 @@
+var LoginView = require('./LoginView');
+var RegisterView = require('./RegisterView');
+
 var KomenBevallen = Backbone.View.extend({
     className: 'container',
     tagName: 'div',
-    template: tpl.komenBevallen,
 
     initialize: function() {
         _.bindAll.apply(_, [this].concat(_.functions(this)));
+        this.loginView = new LoginView();
+        this.registerView = new RegisterView();
     },
 
     render: function() {
-        this.$el.append(this.template());
+        this.$el.append(this.loginView.render().$el);
+        this.$el.append(this.registerView.render().$el);
         return this;
     },
 });
+
+module.exports = KomenBevallen;

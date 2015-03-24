@@ -1,4 +1,4 @@
-/* globals AppRouter:true */
+var AppRouter = require('./router/AppRouter');
 
 var router = new AppRouter();
 Backbone.history.start();

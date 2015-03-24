@@ -1,4 +1,4 @@
-/* globals KomenBevallen:true */
+var KomenBevallen = require('../view/KomenBevallen');
 
 var AppRouter = Backbone.Router.extend({
     komenBevallen: undefined,
@@ -22,3 +22,5 @@ var AppRouter = Backbone.Router.extend({
         $('body').prepend(this.komenBevallen.render().$el);
     }
 });
+
+module.exports = AppRouter;

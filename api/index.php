@@ -27,9 +27,24 @@ $app->post('/login/?', function() use ($app, $usersDAO) {
 	if(!empty($auth)) {
 		unset($auth['password']);
 		return wrapJSON($auth);
-		exit;
 	} else {
 		http_response_code(401); // return unauthorized http code
+		exit;
+	}
+});
+
+$app->post('/register/?', function() use ($app, $usersDAO) {
+	$post = $app->request->post();
+	if(empty($post)) {
+		$post = (array) json_decode($app->request()->getBody());
+	}
+
+	$user = $usersDAO->register($post['email'], $post['password']);
+	if(!empty($user)) {
+		unset($user['password']);
+		return wrapJSON($user);
+	} else {
+		http_response_code(400); // return bad request http code (https://tools.ietf.org/html/rfc7231#section-6.5.1)
 		exit;
 	}
 });

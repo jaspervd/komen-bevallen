@@ -4,3 +4,5 @@ var Settings = (function() {
     Settings.API = '/api';
     return Settings;
 })();
+
+module.exports = Settings;
