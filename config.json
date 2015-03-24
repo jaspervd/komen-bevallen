@@ -1,39 +1,44 @@
 {
-  "stylesheets": {
-    "src":{
-      "folder": "_scss",
-      "file":"**/*.scss"
+    "stylesheets": {
+        "src": {
+            "folder": "./_scss",
+            "file": "**/*.scss"
+        },
+        "dest": {
+            "folder": "./public/css",
+            "file": "screen.css"
+        }
     },
-    "dest": {
-      "folder":"public/css",
-      "file":"screen.css"
-    }
-  },
-  "scripts": {
-    "src":{
-      "folder": "_js",
-      "file":"**/*.js",
-      "entry_file":"app.js"
+    "templates": {
+        "src": {
+            "folder": "./_hbs",
+            "file": "*.hbs"
+        },
+        "dest": {
+            "folder": "./public/js"
+        }
     },
-    "dest": {
-      "folder":"public/js",
-      "file":"app.js"
-    }
-  },
-  "shared": {
-    "src":{
-      "folder": "classes",
-      "file":"**/*.js"
-    }
-  },
-  "templates": {
-    "src":{
-      "folder": "_hbs",
-      "file":"*.hbs"
+    "fonts": {
+        "dest": {
+            "folder": "./public/fonts"
+        }
     },
-    "dest": {
-      "folder":"public/js",
-      "file":"app.js"
+    "scripts": {
+        "src": {
+            "folder": "./_js",
+            "file": "*.js"
+        },
+        "dest": {
+            "folder": "./public/js"
+        }
+    },
+    "vendor": {
+        "src": {
+            "folder": "./bower_components",
+            "file": "**"
+        },
+        "dest": {
+            "file": "vendor.js"
+        }
     }
-  }
 }
