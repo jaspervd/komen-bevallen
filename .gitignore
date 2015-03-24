@@ -37,4 +37,5 @@ bower_components
 ### Other ###
 .DS_STORE
 .phpintel
-public
+public/css
+public/js
