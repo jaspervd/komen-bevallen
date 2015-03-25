@@ -29,5 +29,9 @@ if (!empty($_SESSION['komen_bevallen'])) {
 		} else {
 			$currentSettings = $adminDAO->update($date, $finished);
 		}
+
+		if(empty($currentSettings)) {
+			$error = 'Er is iets misgegaan :\'(';
+		}
 	}
 }
