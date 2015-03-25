@@ -11,14 +11,14 @@ $password = '$w4g';
 
 if (!empty($_POST['login'])) {
 	if (!empty($_POST['username']) && $_POST['username'] === $user && !empty($_POST['password']) && $_POST['password'] === $password) {
-		$_SESSION['komen_bevallen'] = '20/20';
+		$_SESSION['komen_bevallen']['admin'] = '20/20';
 	}
 	else {
 		$error = 'Shit, foute inloggegevens!';
 	}
 }
 
-if (!empty($_SESSION['komen_bevallen'])) {
+if (!empty($_SESSION['komen_bevallen']['admin'])) {
 	$currentSettings = $adminDAO->select();
 	if (!empty($_POST['edit'])) {
 		$date = $_POST['date'];
