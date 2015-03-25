@@ -1,5 +1,8 @@
 var LoginView = require('./LoginView');
 var RegisterView = require('./RegisterView');
+var OverviewView = require('./OverviewView');
+var ResultView = require('./ResultView');
+var SettingsView = require('./SettingsView');
 
 var KomenBevallen = Backbone.View.extend({
     className: 'container',

@@ -1,0 +1,48 @@
+<article class="settings">
+    <header>
+        <a href="#">Log uit</a>
+        <h1>Settings</h1>
+        <a href="#">Sluiten</a>
+    </header>
+    <form method="post" action="#settings" autocomplete="off">
+    	<fieldset>
+    		<legend>Settings</legend>
+
+    		<p>
+    		    <label for="photo">Foto</label>
+                <input type="file" name="photo" class="photo" value="Upload" accept="image/*" capture /><input type="button" value="edit" />
+    		</p>
+    		<p>
+    		    <label for="moeder">Moeder</label>
+    		    <input type="text" required pattern=".{2,}" name="moeder" class="moeder" placeholder="Ellen" value="" /><input type="button" value="edit" />
+
+    		</p>
+    		<p>
+                <label for="partner">Partner</label>
+                <input type="text" required pattern=".{2,}" name="partner" class="partner" placeholder="Geoffrey" value="" /><input type="button" value="edit" />
+            </p>
+            <p>
+            	<label for="email">E-mailadres</label>
+            	<input type="email" name="email" class="email" placeholder="john@doe.com" value="" /><input type="button" value="edit" />
+            </p>
+            <p>
+            	<label for="password">Wachtwoord</label>
+            	<input type="password" required pattern=".{2,}" name="password" class="password" placeholder="wachtwoord" value="" /><input type="button" value="edit" />
+            </p>
+            <p>
+                <label for="street">Straat</label>
+                <input type="text" required pattern=".{2,}" name="street" class="street" placeholder="Stationsstraat" value="" />
+                <label for="streetnr">Nr.</label>
+                <input type="number" name="streetnr" class="streetnr" placeholder="12" value="" /><input type="button" value="edit" />
+
+                <label for="city">Gemeente</label>
+                <input type="text" required pattern=".{2,}" name="city" class="city" placeholder="Kortrijk" value="" /><input type="button" value="edit" />
+
+            </p>
+            <p>
+                <label for="telephone">Telefoonnummer</label>
+                <input type="tel" name="telephone" class="telephone" value="" /><input type="button" value="edit" />
+
+    	</fieldset>
+    </form>
+</article>

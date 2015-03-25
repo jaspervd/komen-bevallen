@@ -1,16 +1,53 @@
-<form method="post" action="#login" autocomplete="off">
+<form method="post" action="#register" autocomplete="off">
 	<fieldset>
 		<legend>Register</legend>
+
 		<p>
-			<label>E-mailadres</label>
-			<input type="email" name="email" class="email" placeholder="john@doe.com" />
+        	<label for="email">E-mailadres</label>
+        	<input type="email" name="email" class="email" placeholder="john@doe.com" value="" />
+        </p>
+        <p>
+        	<label for="password">Wachtwoord</label>
+        	<input type="password" required pattern=".{2,}" name="password" class="password" value="" />
+        </p>
+        <p>
+            <label for="passwordconfirm">Herhaal wachtwoord</label>
+            <input type="password" required pattern=".{2,}" name="passwordconfirm" class="passwordconfirm" value="" />
+        </p>
+		<p>
+		    <label for="photo">Foto</label>
+            <input type="file" name="photo" class="photo" value="Upload" accept="image/*" capture />
 		</p>
 		<p>
-			<label>Wachtwoord</label>
-			<input type="password" name="password" class="password" />
+		    <label for="moeder">Moeder</label>
+		    <input type="text" required pattern=".{2,}" name="moeder" class="moeder" placeholder="Ellen" value="" />
 		</p>
 		<p>
+            <label for="partner">Partner</label>
+            <input type="text" required pattern=".{2,}" name="partner" class="partner" placeholder="Geoffrey" value="" />
+        </p>
+        <p>
+            <label for="duedate">Due date</label>
+            <input type="date" name="duedate" class="duedate" />
+        </p>
+        <p>
+            <label for="street">Straat</label>
+            <input type="text" required pattern=".{2,}" name="street" class="street" placeholder="Stationsstraat" value="" />
+            <label for="streetnr">Nr.</label>
+            <input type="number" name="streetnr" class="streetnr" placeholder="12" value="" />
+            <label for="city">Gemeente</label>
+            <input type="text" required pattern=".{2,}" name="city" class="city" placeholder="Kortrijk" value="" />
+
+        </p>
+        <p>
+            <label for="telephone">Telefoonnummer</label>
+            <input type="tel" name="telephone" class="telephone" value="" />
+
+		<p>
+		    <input type="button" value="Vorige" />
+		    <input type="button" value="Volgende" />
 			<input type="submit" value="Registreer" />
 		</p>
 	</fieldset>
 </form>
+
