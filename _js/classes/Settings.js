@@ -1,7 +1,7 @@
 var Settings = (function() {
     function Settings() {}
 
-    Settings.API = '/api';
+    Settings.API = '/SCHOOL/KOMEN/api';
     return Settings;
 })();
 

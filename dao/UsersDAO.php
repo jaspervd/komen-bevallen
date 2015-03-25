@@ -2,7 +2,7 @@
 require_once __DIR__ . '/DAO.php';
 class UsersDAO extends DAO {
 	public function selectById($id) {
-		$sql = "SELECT * FROM `cl_cheers` WHERE `id` = :id";
+		$sql = "SELECT * FROM `kb_users` WHERE `id` = :id";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindValue(':id', $id);
 		$stmt->execute();
@@ -21,6 +21,18 @@ class UsersDAO extends DAO {
 			}
 		}
 
-		return false;
+		return array();
+	}
+
+	public function register($email, $password) {
+		$sql = "INSERT INTO `kb_users` (`email`, `password`) VALUES (:email, :password)";
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindValue(':email', $email);
+		$stmt->bindValue(':password', Util::encrypt($password));
+		if($stmt->execute()) {
+			return $this->selectById($this->pdo->lastInsertId());
+		}
+
+		return array();
 	}
 }

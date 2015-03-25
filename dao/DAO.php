@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/classes/Util.php';
+require_once '../classes/Util.php';
 class DAO {
 	private static $dbHost = 'localhost';
 	private static $dbName = 'maiv_komen';

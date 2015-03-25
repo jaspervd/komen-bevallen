@@ -120,10 +120,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('browser-sync', function() {
-    browserSync({
-        host: "localhost",
-        port: 8888
-    });
+    browserSync.init(["css/*.css", "js/*.js"]);
 });
 
 gulp.task('default', ['watch', 'stylesheets', 'hinting', 'scripts', 'vendor', 'browser-sync']);
