@@ -24,11 +24,18 @@ class UsersDAO extends DAO {
 		return array();
 	}
 
-	public function register($email, $password) {
-		$sql = "INSERT INTO `kb_users` (`email`, `password`) VALUES (:email, :password)";
+	public function register($email, $password, $mother, $partner, $duedate, $street, $streetnr, $city, $telephone) {
+		$sql = "INSERT INTO `kb_users` (`email`, `password`, `mother`, `partner`, `duedate`, `street`, `streetnr`, `city`, `telephone`) VALUES (:email, :password, :mother, :partner, :duedate, :street, :streetnr, :city, :telephone)";
 		$stmt = $this->pdo->prepare($sql);
 		$stmt->bindValue(':email', $email);
 		$stmt->bindValue(':password', Util::encrypt($password));
+		$stmt->bindValue(':mother', $email);
+		$stmt->bindValue(':partner', $partner);
+		$stmt->bindValue(':duedate', $duedate);
+		$stmt->bindValue(':street', $street);
+		$stmt->bindValue(':streetnr', $streetnr);
+		$stmt->bindValue(':city', $city);
+		$stmt->bindValue(':telephone', $telephone);
 		if($stmt->execute()) {
 			return $this->selectById($this->pdo->lastInsertId());
 		}

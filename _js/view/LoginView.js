@@ -11,6 +11,7 @@ var LoginView = Backbone.View.extend({
 	},
 
 	login: function(e) {
+		/*
 		e.preventDefault();
 
 		$.post(Settings.API + '/login', {
@@ -20,7 +21,7 @@ var LoginView = Backbone.View.extend({
 			console.log('Hoera! Ik ben ingelogd!');
 		}, "json").fail(function(data) {
 			console.log(data.responseJSON);
-		}, "json");
+		}, "json");*/
 	},
 
 	render: function() {

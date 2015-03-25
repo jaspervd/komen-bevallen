@@ -1,4 +1,4 @@
-<form method="post" action="#login">
+<form method="post" action="#auth">
 	<fieldset>
 		<legend>Login</legend>
 		<p>
@@ -10,8 +10,9 @@
 			<input type="password" required pattern=".{2,}" name="password" class="password" value="" />
 		</p>
 		<p>
-			<input type="submit" value="Inloggen" />
+			<input type="submit" name="login" value="Inloggen" />
 			<input type="button" value="of registreer" />
+			<a href="#wachtwoordvergeten">wachtwoord vergeten?</a>
 		</p>
 	</fieldset>
 </form>

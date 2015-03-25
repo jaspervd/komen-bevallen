@@ -5,7 +5,7 @@ var RegisterView = Backbone.View.extend({
 	initialize: function() {
 		_.bindAll.apply(_, [this].concat(_.functions(this)));
 	},
-
+/*
 	events: {
 		'submit': 'register'
 	},
@@ -26,7 +26,7 @@ var RegisterView = Backbone.View.extend({
 			}
 		});
 	},
-
+*/
 	render: function() {
 		this.$el.append(template());
 		return this;

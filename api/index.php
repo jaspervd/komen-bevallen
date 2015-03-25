@@ -12,6 +12,16 @@ require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARAT
 $app = new \Slim\Slim();
 $usersDAO = new UsersDAO();
 
+$app->get('/me/?', function() use ($usersDAO) {
+    if(!empty($_SESSION['komen_bevallen']['user'])) {
+        $user = $usersDAO->selectById($_SESSION['komen_bevallen']['user']['id']);
+        unset($user['password']);
+        return Util::json($user);
+    } else {
+        return Util::json(array());
+    }
+});
+/*
 $app->post('/login/?', function () use ($app, $usersDAO) {
     $post = $app->request->post();
     if (empty($post)) {
@@ -47,5 +57,5 @@ $app->post('/users/?', function () use ($app, $usersDAO) {
         return Util::json(array('error' => 'Er is iets verkeerd gegaan tijdens het registreren.'));
     }
 });
-
+*/
 $app->run();
