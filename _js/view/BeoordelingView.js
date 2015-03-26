@@ -1,4 +1,4 @@
-var template = require('../../_hbs/_beoordeling.hbs');
+var template = require('../../_hbs/beoordeling.hbs');
 
 var BeoordelingView = Backbone.View.extend({
     initialize: function() {
