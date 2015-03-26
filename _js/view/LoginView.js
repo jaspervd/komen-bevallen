@@ -2,6 +2,8 @@ var template = require('../../_hbs/login.hbs');
 var Settings = require('../classes/Settings');
 
 var LoginView = Backbone.View.extend({
+	template: template,
+
 	initialize: function() {
 		_.bindAll.apply(_, [this].concat(_.functions(this)));
 	},
@@ -25,7 +27,7 @@ var LoginView = Backbone.View.extend({
 	},
 
 	render: function() {
-		this.$el.append(template());
+		this.$el.append(this.template());
 		return this;
 	},
 });

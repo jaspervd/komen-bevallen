@@ -1,6 +1,7 @@
-var KomenBevallen = require('../view/KomenBevallen');
+var OverviewView = require('../view/OverviewView');
 var LoginView = require('../view/LoginView');
 var RegisterView = require('../view/RegisterView');
+var ForgotPasswordView = require('../view/ForgotPasswordView');
 var Settings = require('../classes/Settings');
 var User = require('../model/User');
 
@@ -15,56 +16,83 @@ var AppRouter = Backbone.Router.extend({
     },
 
     routes: {
-        '': 'auth',
+        '': 'login',
         'login': 'login',
         'register': 'register',
         'overview': 'overview',
-        'wachtwoordvergeten': 'register',
-        '*path': 'auth'
+        'wwvergeten': 'forgotpw',
+        'loguit': 'logout',
+        '*path': 'login'
     },
 
-    auth: function() {
-        var self = this;
-        $.get(Settings.API + '/me', function(data) {
-            if(!$.isEmptyObject(data)) {
-                self.user = new User(data);
-                self.navigate('overview', {trigger: true});
-            } else {
-                self.navigate('login', {trigger: true});
-            }
-        });
+    execute: function(callback, args) {
+        if ($.isEmptyObject(this.user)) {
+            var self = this;
+            $.get(Settings.API + '/me', function(data) {
+                if (!$.isEmptyObject(data)) {
+                    self.user = new User(data);
+                    console.log('hey, ik ben ingelogd!');
+                }
+                callback.apply(self, args); // continue...
+            });
+        } else {
+            callback.apply(this, args);
+        }
+    },
+
+    redirectIfUnauthorized: function() {
+        if ($.isEmptyObject(this.user)) {
+            //this.navigate('login', {trigger: true});
+            this.login();
+        }
+    },
+
+    redirectIfLoggedIn: function() {
+        if (!$.isEmptyObject(this.user)) {
+            //this.navigate('overview', {trigger: true});
+            this.overview();
+        }
     },
 
     login: function() {
-        if($.isEmptyObject(this.user)) {
-            this.loginView = new LoginView();
-            this.render(this.loginView);
-        } else {
+        //this.redirectIfLoggedIn();
+        if (!$.isEmptyObject(this.user)) {
             this.navigate('overview', {trigger: true});
         }
+        this.loginView = new LoginView();
+        this.render(this.loginView);
     },
 
     register: function() {
-        if($.isEmptyObject(this.user)) {
-            this.registerView = new RegisterView();
-            this.render(this.registerView);
-        } else {
-            this.navigate('overview', {trigger: true});
-        }
+        this.redirectIfLoggedIn();
+        this.registerView = new RegisterView();
+        this.render(this.registerView);
+    },
+
+    forgotpw: function() {
+        this.redirectIfLoggedIn();
+        this.forgotPasswordView = new ForgotPasswordView();
+        this.render(this.forgotPasswordView);
     },
 
     overview: function() {
-        if(!$.isEmptyObject(this.user)) {
-            this.komenBevallen = new KomenBevallen();
-            this.render(this.komenBevallen);
-        } else {
-            this.auth();
+        //this.redirectIfUnauthorized();
+        console.log('kzou in mennen overview moeten zijn..');
+        this.overviewView = new OverviewView();
+        this.render(this.overviewView);
+    },
+
+    logout: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.user.destroy();
+            this.navigate('login', {
+                trigger: true
+            });
         }
     },
 
     render: function(view) {
-        $('.container').remove();
-        $('body').prepend(view.render().$el);
+        $('.container').html(view.render().$el);
     }
 });
 

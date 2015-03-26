@@ -1,7 +1,9 @@
 var template = require('../../_hbs/register.hbs');
-var User = require('../model/User.js');
+var User = require('../model/User');
 
 var RegisterView = Backbone.View.extend({
+	template: template,
+
 	initialize: function() {
 		_.bindAll.apply(_, [this].concat(_.functions(this)));
 	},
@@ -28,7 +30,7 @@ var RegisterView = Backbone.View.extend({
 	},
 */
 	render: function() {
-		this.$el.append(template());
+		this.$el.append(this.template());
 		return this;
 	},
 });
