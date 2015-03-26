@@ -35,4 +35,13 @@ class UsersDAO extends DAO {
 
 		return array();
 	}
+
+	public function checkExistingEmail($email) {
+		$sql = "SELECT `id` FROM `kb_users` WHERE `email` = :email";
+		$stmt = $this->pdo->prepare($sql);
+		$stmt->bindValue(':email', $email);
+		$stmt->execute();
+
+		return ($stmt->fetch(PDO::FETCH_ASSOC));
+	}
 }

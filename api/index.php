@@ -12,6 +12,7 @@ require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARAT
 $app = new \Slim\Slim();
 $usersDAO = new UsersDAO();
 
+// check if logged in, if so: return user
 $app->get('/me/?', function() use ($usersDAO) {
     if(!empty($_SESSION['komen_bevallen']['user'])) {
         $user = $usersDAO->selectById($_SESSION['komen_bevallen']['user']['id']);
@@ -22,6 +23,7 @@ $app->get('/me/?', function() use ($usersDAO) {
     }
 });
 
+// logout
 $app->delete('/users/:id/?', function($id) {
     if(!empty($_SESSION['komen_bevallen']['user']) && $_SESSION['komen_bevallen']['user']['id'] == $id) {
         unset($_SESSION['komen_bevallen']['user']);
@@ -33,4 +35,21 @@ $app->delete('/users/:id/?', function($id) {
         exit;
     }
 });
+
+$app->post('/forgotpw/?', function() use ($app, $usersDAO) {
+    $post = $app->request->post();
+    if(empty($post)) {
+        $post = (array) json_decode($app->request()->getBody());
+    }
+
+    if($usersDAO->checkExistingEmail($post['email'])) {
+        // TODO: mail
+        http_response_code(200);
+        exit;
+    } else {
+        http_response_code(401);
+        exit;
+    }
+});
+
 $app->run();

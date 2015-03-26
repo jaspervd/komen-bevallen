@@ -20,8 +20,8 @@ var AppRouter = Backbone.Router.extend({
         'login': 'login',
         'register': 'register',
         'overview': 'overview',
-        'wwvergeten': 'forgotpw',
-        'loguit': 'logout',
+        'forgotpw': 'forgotpw',
+        'logout': 'logout',
         '*path': 'login'
     },
 
@@ -42,13 +42,17 @@ var AppRouter = Backbone.Router.extend({
 
     redirectIfUnauthorized: function() {
         if ($.isEmptyObject(this.user)) {
-            this.navigate('login', {trigger: true});
+            this.navigate('login', {
+                trigger: true
+            });
         }
     },
 
     redirectIfLoggedIn: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.navigate('overview', {trigger: true});
+            this.navigate('overview', {
+                trigger: true
+            });
         }
     },
 
@@ -85,10 +89,11 @@ var AppRouter = Backbone.Router.extend({
     logout: function() {
         if (!$.isEmptyObject(this.user)) {
             this.user.destroy();
-            this.navigate('login', {
-                trigger: true
-            });
         }
+        this.user = [];
+        this.navigate('login', {
+            trigger: true
+        });
     },
 
     render: function(view) {
