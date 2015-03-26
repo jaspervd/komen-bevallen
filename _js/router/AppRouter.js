@@ -19,6 +19,7 @@ var AppRouter = Backbone.Router.extend({
         'login': 'login',
         'register': 'register',
         'overview': 'overview',
+        'wachtwoordvergeten': 'register',
         '*path': 'auth'
     },
 
@@ -37,8 +38,7 @@ var AppRouter = Backbone.Router.extend({
     login: function() {
         if($.isEmptyObject(this.user)) {
             this.loginView = new LoginView();
-            this.render();
-            $('body').prepend(this.loginView.render().$el);
+            this.render(this.loginView);
         } else {
             this.navigate('overview', {trigger: true});
         }
@@ -47,8 +47,7 @@ var AppRouter = Backbone.Router.extend({
     register: function() {
         if($.isEmptyObject(this.user)) {
             this.registerView = new RegisterView();
-            this.render();
-            $('body').prepend(this.registerView.render().$el);
+            this.render(this.registerView);
         } else {
             this.navigate('overview', {trigger: true});
         }
@@ -57,15 +56,15 @@ var AppRouter = Backbone.Router.extend({
     overview: function() {
         if(!$.isEmptyObject(this.user)) {
             this.komenBevallen = new KomenBevallen();
-            this.render();
-            $('body').prepend(this.komenBevallen.render().$el);
+            this.render(this.komenBevallen);
         } else {
             this.auth();
         }
     },
 
-    render: function() {
+    render: function(view) {
         $('.container').remove();
+        $('body').prepend(view.render().$el);
     }
 });
 
