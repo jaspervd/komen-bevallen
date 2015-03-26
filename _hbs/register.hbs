@@ -1,10 +1,10 @@
-<form method="post" action="#auth">
+<form method="post" action="#register">
 	<fieldset>
 		<legend>Register</legend>
 
 		<p>
         	<label for="email">E-mailadres</label>
-        	<input type="email" name="email" class="email" placeholder="john@doe.com" value="" />
+        	<input type="email" required name="email" class="email" placeholder="john@doe.com" value="" />
         </p>
         <p>
         	<label for="password">Wachtwoord</label>
@@ -16,6 +16,7 @@
         </p>
         <p>
 			<input type="submit" name="register" value="Registreer" />
+            <a href="#login" class="button">Terug</a>
 		</p>
 	</fieldset>
 </form>
