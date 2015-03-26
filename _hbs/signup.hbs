@@ -1,0 +1,39 @@
+{{#if signedup}}
+<p>Gefeliciteerd!</p>
+{{else}}
+<form method="post" action="#signup">
+    <fieldset>
+        <legend>Inschrijven</legend>
+        <p>
+            <label for="photo">Foto</label>
+            <input type="file" required name="photo" id="photo" />
+        </p>
+        <p>
+            <label for="type">Situatie</label>
+            <input type="text" list="type_list" required pattern=".{2,}" name="type" id="type" />
+            <datalist id="type_list">
+                <option value="Tienermoeder"></option>
+                <option value="Marginaal"></option>
+                <option value="Niet gekende vader"></option>
+                <option value="Homoseksueel koppel"></option>
+            </datalist>
+        </p>
+        <p>
+            <label for="mother">Moeder</label>
+            <input type="text" required pattern=".{2,}" name="mother" id="mother" />
+        </p>
+        <p>
+            <label for="partner">Partner</label>
+            <input type="text" required pattern=".{2,}" name="partner" id="partner" />
+        </p>
+        <p>
+            <label for="duedate">Allez, voor wanneer is 't?</label>
+            <input type="date" required name="duedate" id="duedate" />
+        </p>
+        <p>
+           <input type="submit" name="signup" value="Inschrijven" />
+           <a href="#overview">terug</a>
+        </p>
+    </fieldset>
+</form>
+{{/if}}

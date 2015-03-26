@@ -2,13 +2,12 @@ var OverviewView = require('../view/OverviewView');
 var LoginView = require('../view/LoginView');
 var RegisterView = require('../view/RegisterView');
 var ForgotPasswordView = require('../view/ForgotPasswordView');
+var SignupView = require('../view/SignupView');
+var SettingsView = require('../view/SettingsView');
 var Settings = require('../classes/Settings');
 var User = require('../model/User');
 
 var AppRouter = Backbone.Router.extend({
-    komenBevallen: undefined,
-    loginView: undefined,
-    registerView: undefined,
     user: undefined,
 
     initialize: function() {
@@ -19,8 +18,10 @@ var AppRouter = Backbone.Router.extend({
         '': 'login',
         'login': 'login',
         'register': 'register',
-        'overview': 'overview',
         'forgotpw': 'forgotpw',
+        'overview': 'overview',
+        'signup': 'signup',
+        'settings': 'settings',
         'logout': 'logout',
         '*path': 'login'
     },
@@ -31,7 +32,6 @@ var AppRouter = Backbone.Router.extend({
             $.get(Settings.API + '/me', function(data) {
                 if (!$.isEmptyObject(data)) {
                     self.user = new User(data);
-                    console.log('hey, ik ben ingelogd!');
                 }
                 callback.apply(self, args); // continue...
             });
@@ -81,6 +81,24 @@ var AppRouter = Backbone.Router.extend({
         if (!$.isEmptyObject(this.user)) {
             this.overviewView = new OverviewView();
             this.render(this.overviewView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    signup: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.signupView = new SignupView();
+            this.render(this.signupView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    settings: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.settingsView = new SettingsView({model: this.user});
+            this.render(this.settingsView);
         }
 
         this.redirectIfUnauthorized();
