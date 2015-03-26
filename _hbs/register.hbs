@@ -1,18 +1,17 @@
 <form method="post" action="#register">
 	<fieldset>
 		<legend>Register</legend>
-
 		<p>
         	<label for="email">E-mailadres</label>
-        	<input type="email" required name="email" class="email" placeholder="john@doe.com" value="" />
+        	<input type="email" required name="email" id="email" placeholder="john@doe.com" />
         </p>
         <p>
         	<label for="password">Wachtwoord</label>
-        	<input type="password" required pattern=".{2,}" name="password" class="password" value="" />
+        	<input type="password" required pattern=".{2,}" name="password" id="password" />
         </p>
         <p>
             <label for="passwordconfirm">Herhaal wachtwoord</label>
-            <input type="password" required pattern=".{2,}" name="passwordconfirm" class="passwordconfirm" value="" />
+            <input type="password" required pattern=".{2,}" name="passwordconfirm" id="passwordconfirm" />
         </p>
         <p>
 			<input type="submit" name="register" value="Registreer" />
@@ -20,4 +19,3 @@
 		</p>
 	</fieldset>
 </form>
-
