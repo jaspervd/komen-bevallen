@@ -10,9 +10,7 @@ require_once ('config.php'); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
-	<script type="text/javascript">
-	var errors = <?php echo (!empty($errors) ? json_encode($errors) : '{}'); ?>;
-	</script>
+	<div class="container"></div>
 	<script type="text/javascript" src="js/vendor.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type='text/javascript' id="__bs_script__">//<![CDATA[
