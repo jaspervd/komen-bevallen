@@ -42,44 +42,44 @@ var AppRouter = Backbone.Router.extend({
 
     redirectIfUnauthorized: function() {
         if ($.isEmptyObject(this.user)) {
-            //this.navigate('login', {trigger: true});
-            this.login();
+            this.navigate('login', {trigger: true});
         }
     },
 
     redirectIfLoggedIn: function() {
         if (!$.isEmptyObject(this.user)) {
-            //this.navigate('overview', {trigger: true});
-            this.overview();
+            this.navigate('overview', {trigger: true});
         }
     },
 
     login: function() {
-        //this.redirectIfLoggedIn();
-        if (!$.isEmptyObject(this.user)) {
-            this.navigate('overview', {trigger: true});
-        }
         this.loginView = new LoginView();
         this.render(this.loginView);
+
+        this.redirectIfLoggedIn();
     },
 
     register: function() {
-        this.redirectIfLoggedIn();
         this.registerView = new RegisterView();
         this.render(this.registerView);
+
+        this.redirectIfLoggedIn();
     },
 
     forgotpw: function() {
-        this.redirectIfLoggedIn();
         this.forgotPasswordView = new ForgotPasswordView();
         this.render(this.forgotPasswordView);
+
+        this.redirectIfLoggedIn();
     },
 
     overview: function() {
-        //this.redirectIfUnauthorized();
-        console.log('kzou in mennen overview moeten zijn..');
-        this.overviewView = new OverviewView();
-        this.render(this.overviewView);
+        if (!$.isEmptyObject(this.user)) {
+            this.overviewView = new OverviewView();
+            this.render(this.overviewView);
+        }
+
+        this.redirectIfUnauthorized();
     },
 
     logout: function() {
