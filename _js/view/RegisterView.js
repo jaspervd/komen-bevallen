@@ -22,8 +22,8 @@ var RegisterView = Backbone.View.extend({
 			password: $(e.currentTarget).find('#password').val()
 		});
 
-		this.$el.find('.step-1').hide();
-		this.$el.find('.step-2').show();
+		this.screen = 2;
+		this.render();
 		Backbone.history.navigate('register/2');
 	},
 
@@ -39,15 +39,16 @@ var RegisterView = Backbone.View.extend({
 
 		this.user.save({
 			success: function(model, response) {
-				this.$el.find('.step-2').hide();
-				this.$el.find('.step-3').show();
 				Backbone.history.navigate('register/3');
 			}
 		});
+
+		this.screen = 3;
+		this.render();
 	},
 
 	render: function() {
-		this.$el.append(this.template({screen: this.screen}));
+		this.$el.html(this.template({screen: this.screen}));
 		return this;
 	},
 });

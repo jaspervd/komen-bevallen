@@ -1,6 +1,8 @@
-/* global Handlebars:true */
 var Handlebars = require('hbsfy/runtime');
 
-Handlebars.registerHelper('equals', function(val1, val2) {
-   return (val1 === val2);
+Handlebars.registerHelper('ifEquals', function(v1, v2, options) {
+	if(v1 === v2) {
+		return options.fn(this);
+	}
+	return options.inverse(this);
 });

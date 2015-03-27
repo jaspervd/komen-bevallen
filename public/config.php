@@ -28,7 +28,7 @@ if (!empty($_POST['login'])) {
     }
 }
 
-if (!empty($_POST['register'])) {
+if (!empty($_POST['signup'])) {
     if (empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
         $errors['register']['email'] = 'Geen geldig e-mailadres ingevuld.';
     }

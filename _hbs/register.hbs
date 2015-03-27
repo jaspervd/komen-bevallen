@@ -1,4 +1,4 @@
-{{#equals screen 1}}
+{{#ifEquals screen 1}}
 <form method="post" class="step-1" action="#register/1">
 	<fieldset>
 		<legend>Register</legend>
@@ -20,8 +20,8 @@
 		</p>
 	</fieldset>
 </form>
-{{/equals}}
-{{#equals screen 2}}
+{{/ifEquals}}
+{{#ifEquals screen 2}}
 <form method="post" class="step-2" action="#register/2">
     <fieldset>
         <legend>Inschrijven</legend>
@@ -56,9 +56,9 @@
         </p>
     </fieldset>
 </form>
-{{/equals}}
-{{#equals screen 3}}
+{{/ifEquals}}
+{{#ifEquals screen 3}}
 <div class="step-3">
     JOEPEIEIEIEIEIEIEIEIEEIEIeIEIE
 </div>
-{{/equals}}
+{{/ifEquals}}
