@@ -2,7 +2,6 @@ var OverviewView = require('../view/OverviewView');
 var LoginView = require('../view/LoginView');
 var RegisterView = require('../view/RegisterView');
 var ForgotPasswordView = require('../view/ForgotPasswordView');
-var SignupView = require('../view/SignupView');
 var SettingsView = require('../view/SettingsView');
 var Settings = require('../classes/Settings');
 var User = require('../model/User');
@@ -17,10 +16,9 @@ var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'login',
         'login': 'login',
-        'register': 'register',
+        'register/:id': 'register',
         'forgotpw': 'forgotpw',
         'overview': 'overview',
-        'signup': 'signup',
         'settings': 'settings',
         'logout': 'logout',
         '*path': 'login'
@@ -63,11 +61,13 @@ var AppRouter = Backbone.Router.extend({
         this.redirectIfLoggedIn();
     },
 
-    register: function() {
-        this.registerView = new RegisterView();
+    register: function(id) {
+        this.registerView = new RegisterView({screen: id});
         this.render(this.registerView);
 
-        this.redirectIfLoggedIn();
+        if(id < 3) {
+            this.redirectIfLoggedIn();
+        }
     },
 
     forgotpw: function() {
@@ -81,15 +81,6 @@ var AppRouter = Backbone.Router.extend({
         if (!$.isEmptyObject(this.user)) {
             this.overviewView = new OverviewView();
             this.render(this.overviewView);
-        }
-
-        this.redirectIfUnauthorized();
-    },
-
-    signup: function() {
-        if (!$.isEmptyObject(this.user)) {
-            this.signupView = new SignupView();
-            this.render(this.signupView);
         }
 
         this.redirectIfUnauthorized();

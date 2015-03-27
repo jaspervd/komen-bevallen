@@ -4,7 +4,11 @@ var User = Backbone.Model.extend({
     defaults: {
         id: null,
         email: undefined,
-        date_created: undefined
+        mother: undefined,
+        partner: undefined,
+        photo_url: undefined,
+        duedate: undefined,
+        type: undefined
     },
 
     urlRoot: Settings.API + '/users'

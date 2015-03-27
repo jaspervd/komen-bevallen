@@ -5,14 +5,12 @@ define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'classes' . DIRECTORY_SEPARATOR . 'Util.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
-require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'PregnanciesDAO.php';
 require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARATOR . 'Slim.php';
 
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
 $usersDAO = new UsersDAO();
-$pregnanciesDAO = new PregnanciesDAO();
 
 // check if logged in, if so: return user
 $app->get('/me/?', function() use ($usersDAO) {
@@ -51,30 +49,6 @@ $app->post('/forgotpw/?', function() use ($app, $usersDAO) {
         exit;
     } else {
         http_response_code(400);
-        exit;
-    }
-});
-
-// sign up (register pregnancy)
-$app->post('/pregnancies/?', function() use ($app, $pregnanciesDAO) {
-    if(!empty($_SESSION['komen_bevallen']['user'])) {
-        $post = $app->request->post();
-        if(empty($post)) {
-            $post = (array) json_decode($app->request()->getBody());
-        }
-
-    // TODO: Server side validatie + foto upload
-        $photo_url = '//';
-        $pregnancy = $pregnanciesDAO->insert($_SESSION['komen_bevallen']['user']['id'], $post['mother'], $post['partner'], $post['type'], $post['duedate'], $photo_url);
-
-        if(!empty($pregnancy)) {
-            return Util::json($pregnancy);
-        } else {
-            http_response_code(400);
-            exit;
-        }
-    } else {
-        http_response_code(403);
         exit;
     }
 });
