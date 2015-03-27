@@ -1,8 +1,13 @@
+var LoginView = require('../view/auth/LoginView');
+var RegisterView = require('../view/auth/RegisterView');
+var ForgotPasswordView = require('../view/auth/ForgotPasswordView');
 var OverviewView = require('../view/OverviewView');
-var LoginView = require('../view/LoginView');
-var RegisterView = require('../view/RegisterView');
-var ForgotPasswordView = require('../view/ForgotPasswordView');
-var SettingsView = require('../view/SettingsView');
+var PregnancyView = require('../view/PregnancyView');
+var RateView = require('../view/RateView');
+var ReliveView = require('../view/ReliveView');
+var ContendersView = require('../view/ContendersView');
+var SoundboardView = require('../view/SoundboardView');
+
 var Settings = require('../classes/Settings');
 var User = require('../model/User');
 
@@ -19,7 +24,11 @@ var AppRouter = Backbone.Router.extend({
         'register/:id': 'register',
         'forgotpw': 'forgotpw',
         'overview': 'overview',
-        'settings': 'settings',
+        'pregnancy': 'pregnancy',
+        'rate': 'rate',
+        'relive': 'relive',
+        'contenders': 'contenders',
+        'soundboard': 'soundboard',
         'logout': 'logout',
         '*path': 'login'
     },
@@ -86,10 +95,46 @@ var AppRouter = Backbone.Router.extend({
         this.redirectIfUnauthorized();
     },
 
-    settings: function() {
+    pregnancy: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.settingsView = new SettingsView({model: this.user});
-            this.render(this.settingsView);
+            this.pregnancyView = new PregnancyView();
+            this.render(this.pregnancyView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    rate: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.rateView = new RateView();
+            this.render(this.rateView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    relive: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.reliveView = new ReliveView();
+            this.render(this.reliveView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    contenders: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.contendersView = new ContendersView();
+            this.render(this.contendersView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    soundboard: function() {
+        if (!$.isEmptyObject(this.user)) {
+            this.soundboardView = new SoundboardView();
+            this.render(this.soundboardView);
         }
 
         this.redirectIfUnauthorized();

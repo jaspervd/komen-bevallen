@@ -1,5 +1,5 @@
-var template = require('../../_hbs/register.hbs');
-var User = require('../model/User');
+var template = require('../../../_hbs/register.hbs');
+var User = require('../../model/User');
 
 var RegisterView = Backbone.View.extend({
 	template: template,

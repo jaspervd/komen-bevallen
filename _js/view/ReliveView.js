@@ -1,6 +1,6 @@
-var template = require('../../_hbs/_gallerij.hbs');
+var template = require('../../_hbs/relive.hbs');
 
-var GallerijView = Backbone.View.extend({
+var ReliveView = Backbone.View.extend({
 	template: template,
 
     initialize: function() {
@@ -8,9 +8,9 @@ var GallerijView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.append(this.template());
+        this.$el.html(this.template());
         return this;
     },
 });
 
-module.exports = GallerijView;
+module.exports = ReliveView;

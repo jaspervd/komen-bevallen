@@ -1,6 +1,6 @@
-var template = require('../../_hbs/_info.hbs');
+var template = require('../../_hbs/contenders.hbs');
 
-var InfoView = Backbone.View.extend({
+var ContendersView = Backbone.View.extend({
 	template: template,
 
     initialize: function() {
@@ -8,10 +8,9 @@ var InfoView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.append(this.template());
+        this.$el.html(this.template());
         return this;
     },
 });
 
-module.exports = InfoView;
-
+module.exports = ContendersView;

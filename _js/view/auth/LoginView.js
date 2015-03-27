@@ -1,5 +1,5 @@
-var template = require('../../_hbs/login.hbs');
-var Settings = require('../classes/Settings');
+var template = require('../../../_hbs/login.hbs');
+var Settings = require('../../classes/Settings');
 
 var LoginView = Backbone.View.extend({
 	template: template,

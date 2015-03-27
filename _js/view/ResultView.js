@@ -8,7 +8,7 @@ var ResultView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.append(this.template());
+        this.$el.html(this.template());
         return this;
     },
 });
