@@ -6,8 +6,32 @@ class UsersDAO extends DAO
         $sql = "SELECT * FROM `kb_users` WHERE `id` = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':id', $id);
-        $stmt->execute();
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        if($stmt->execute()) {
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            if (!empty($user)) {
+                unset($user['password']);
+                return $user;
+            }
+        }
+
+        return array();
+    }
+
+    public function selectByGroupId($group_id) {
+        $sql = "SELECT * FROM `kb_users` WHERE `group_id` = :group_id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':group_id', $group_id);
+        if($stmt->execute()) {
+            $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if (!empty($users)) {
+                foreach($users as $key => $value) {
+                    unset($users[$key]['password']);
+                }
+                return $users;
+            }
+        }
+
+        return array();
     }
 
     public function authenticate($email, $password) {

@@ -16,7 +16,6 @@ $usersDAO = new UsersDAO();
 $app->get('/me/?', function() use ($usersDAO) {
     if(!empty($_SESSION['komen_bevallen']['user'])) {
         $user = $usersDAO->selectById($_SESSION['komen_bevallen']['user']['id']);
-        unset($user['password']);
         return Util::json($user);
     } else {
         return Util::json(array());
