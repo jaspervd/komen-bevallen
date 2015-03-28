@@ -121,7 +121,7 @@ var AppRouter = Backbone.Router.extend({
 
     relive: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.reliveView = new ReliveView();
+            this.reliveView = new ReliveView({model: this.user});
             this.render(this.reliveView);
         }
 

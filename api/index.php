@@ -70,7 +70,7 @@ $app->get('/ratings/total/:group_id/?', function($group_id) use ($ratingsDAO) {
 // photos
 $app->get('/photos/:day/?', function($day) use ($photosDAO) {
     if(!empty($_SESSION['komen_bevallen']['user'])) {
-        if(strotime($day)) {
+        if(strtotime($day)) {
             return Util::json($photosDAO->selectByDay($day));
         } else {
             http_response_code(400);
