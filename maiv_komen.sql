@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost:8889
--- Gegenereerd op: 28 mrt 2015 om 17:33
+-- Gegenereerd op: 28 mrt 2015 om 17:55
 -- Serverversie: 5.5.38
 -- PHP-versie: 5.6.2
 
@@ -58,7 +58,7 @@ CREATE TABLE `kb_photos` (
   `user_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `photo_url` text NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `day` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -74,7 +74,8 @@ CREATE TABLE `kb_ratings` (
   `points_show` tinyint(2) NOT NULL,
   `points_baby` tinyint(2) NOT NULL,
   `points_partner` tinyint(2) NOT NULL,
-  `contender_id` int(11) NOT NULL
+  `contender_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -93,6 +94,7 @@ CREATE TABLE `kb_users` (
   `photo_url` text NOT NULL,
   `duedate` date NOT NULL,
   `type` varchar(255) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
