@@ -6,6 +6,7 @@ var PregnancyView = require('../view/PregnancyView');
 var RateView = require('../view/RateView');
 var ReliveView = require('../view/ReliveView');
 var ContendersView = require('../view/ContendersView');
+var DetailView = require('../view/DetailView');
 var SoundboardView = require('../view/SoundboardView');
 
 var Settings = require('../classes/Settings');
@@ -26,9 +27,10 @@ var AppRouter = Backbone.Router.extend({
         'forgotpw': 'forgotpw',
         'overview': 'overview',
         'pregnancy': 'pregnancy',
-        'rate': 'rate',
+        'rate/:id': 'rate',
         'relive': 'relive',
         'contenders': 'contenders',
+        'detail/:id': 'detail',
         'soundboard': 'soundboard',
         'logout': 'logout',
         '*path': 'login'
@@ -94,7 +96,7 @@ var AppRouter = Backbone.Router.extend({
 
     overview: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.overviewView = new OverviewView();
+            this.overviewView = new OverviewView({user: this.user});
             this.render(this.overviewView);
         }
 
@@ -110,10 +112,15 @@ var AppRouter = Backbone.Router.extend({
         this.redirectIfUnauthorized();
     },
 
-    rate: function() {
+    rate: function(id) {
         if (!$.isEmptyObject(this.user)) {
-            this.rateView = new RateView();
+            console.log(id, this.user.get('id'));
+            this.rateView = new RateView({contender_id: id});
             this.render(this.rateView);
+
+            if(id === this.user.get('id')) {
+                this.navigate('overview', {trigger: true});
+            }
         }
 
         this.redirectIfUnauthorized();
@@ -130,8 +137,17 @@ var AppRouter = Backbone.Router.extend({
 
     contenders: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.contendersView = new ContendersView();
+            this.contendersView = new ContendersView({group_id: this.user.get('group_id')});
             this.render(this.contendersView);
+        }
+
+        this.redirectIfUnauthorized();
+    },
+
+    detail: function(id) {
+        if (!$.isEmptyObject(this.user)) {
+            this.detailView = new DetailView({contender_id: id});
+            this.render(this.detailView);
         }
 
         this.redirectIfUnauthorized();

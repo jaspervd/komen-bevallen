@@ -14,15 +14,15 @@ if (!empty($_POST['login'])) {
 		$_SESSION['komen_bevallen']['admin'] = '20/20';
 	}
 	else {
-		$error = 'Shit, foute inloggegevens!';
+		$error = 'Jammer, foute inloggegevens!';
 	}
 }
 
 if (!empty($_SESSION['komen_bevallen']['admin'])) {
 	$currentSettings = $adminDAO->select();
 	if (!empty($_POST['edit'])) {
-		$date = $_POST['date'];
-		$finished = $_POST['finished'];
+		$date = (empty($_POST['date'])? date('Y-m-d') : $_POST['date']);
+		$finished = (empty($_POST['finished'])? 'no' : $_POST['finished']);
 
 		if(empty($currentSettings)) {
 			$currentSettings = $adminDAO->insert($date, $finished);

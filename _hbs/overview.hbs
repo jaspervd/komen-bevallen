@@ -4,8 +4,12 @@
 <nav>
     <ul>
         <li><a href="#pregnancy">mijn zwangerschap</a></li>
-        <li><a href="#rate">beoordelen</a></li>
-        <li><a href="#contenders">deelnemers</a></li>
+        {{#if finished}}
+        <li><a href="#result">resultaat</a></li>
+        {{else}}
+        <li><a href="#rate"{{#if notThisWeek}} class="disabled"{{/if}}>beoordelen</a></li>
+        {{/if}}
+        <li><a href="#contenders"{{#if notThisWeek}} class="disabled"{{/if}}>deelnemers</a></li>
         <li><a href="#relive">herbeleef</a></li>
         <li><a href="#soundboard">soundboard</a></li>
         <li><a href="#logout">logout</a></li>

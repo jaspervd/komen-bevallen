@@ -4,6 +4,7 @@ date_default_timezone_set('Europe/Brussels');
 define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'classes' . DIRECTORY_SEPARATOR . 'Util.php';
+require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'AdminDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'UsersDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'GroupsDAO.php';
 require_once WWW_ROOT . 'dao' . DIRECTORY_SEPARATOR . 'RatingsDAO.php';
@@ -13,15 +14,30 @@ require_once WWW_ROOT . 'api' . DIRECTORY_SEPARATOR . 'Slim' . DIRECTORY_SEPARAT
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
+$adminDAO = new AdminDAO();
 $usersDAO = new UsersDAO();
 $groupsDAO = new GroupsDAO();
 $ratingsDAO = new RatingsDAO();
 $photosDAO = new PhotosDAO();
 
+// get today
+$app->get('/today/?', function() use ($adminDAO) {
+    return Util::json($adminDAO->select());
+});
+
 // check if logged in, if so: return user
 $app->get('/me/?', function() use ($usersDAO) {
     if(!empty($_SESSION['komen_bevallen']['user'])) {
         $user = $usersDAO->selectById($_SESSION['komen_bevallen']['user']['id']);
+        return Util::json($user);
+    } else {
+        return Util::json(array());
+    }
+});
+
+$app->get('/users/:id/?', function($id) use ($usersDAO) {
+    if(!empty($_SESSION['komen_bevallen']['user'])) {
+        $user = $usersDAO->selectById($id);
         return Util::json($user);
     } else {
         return Util::json(array());
@@ -44,7 +60,7 @@ $app->delete('/users/:id/?', function($id) {
 // groups
 $app->get('/groups/:id', function($id) use ($groupsDAO) {
     if(!empty($_SESSION['komen_bevallen']['user'])) {
-        return Util::json($ratingsDAO->selectByGroupId($id));
+        return Util::json($groupsDAO->selectById($id));
     } else {
         return Util::json(array());
     }
