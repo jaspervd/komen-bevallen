@@ -7,7 +7,7 @@ class GroupsDAO extends DAO
 
     public function __construct() {
         parent::__construct();
-        $usersDAO = new UsersDAO();
+        $this->usersDAO = new UsersDAO();
     }
 
     public function selectById($id) {
@@ -17,7 +17,7 @@ class GroupsDAO extends DAO
         if ($stmt->execute()) {
             $group = $stmt->fetch(PDO::FETCH_ASSOC);
             if(!empty($group)) {
-                $group['users'] = $usersDAO->selectByGroupId($group['id']);
+                $group['users'] = $this->usersDAO->selectByGroupId($group['id']);
                 return $group;
             }
         }
@@ -30,10 +30,12 @@ class GroupsDAO extends DAO
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':week', $week);
         if ($stmt->execute()) {
-            $group = $stmt->fetch(PDO::FETCH_ASSOC);
-            if(!empty($group)) {
-                $group['users'] = $usersDAO->selectByGroupId($group['id']);
-                return $group;
+            $groups = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if(!empty($groups)) {
+                foreach($groups as $key => $group) {
+                    $groups[$key]['users'] = $this->usersDAO->selectByGroupId($group['id']);
+                }
+                return $groups;
             }
         }
 

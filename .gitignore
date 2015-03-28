@@ -39,6 +39,7 @@ bower_components
 .phpintel
 public/css
 public/js
+upload
 
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm

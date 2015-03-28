@@ -3,7 +3,6 @@ var User = require('../../model/User');
 
 var RegisterView = Backbone.View.extend({
 	template: template,
-	screen: 1,
 	user: undefined,
 
 	initialize: function() {
@@ -11,44 +10,27 @@ var RegisterView = Backbone.View.extend({
 	},
 
 	events: {
-		'submit .step-1': 'register',
-		'submit .step-2': 'signup',
+		'click .step-1 input[type="submit"]': 'stepOne'
 	},
 
-	register: function(e) {
+	stepOne: function(e) {
 		e.preventDefault();
 		this.user = new User({
 			email: $(e.currentTarget).find('#email').val(),
 			password: $(e.currentTarget).find('#password').val()
 		});
 
-		this.screen = 2;
-		this.render();
+		this.showScreen(2);
 		Backbone.history.navigate('register/2');
 	},
 
-	signup: function(e) {
-		e.preventDefault();
-		this.user.set({
-			mother: $(e.currentTarget).find('#mother').val(),
-			partner: $(e.currentTarget).find('#partner').val(),
-			photo: $(e.currentTarget).find('#photo').val(),
-			duedate: $(e.currentTarget).find('#duedate').val(),
-			type: $(e.currentTarget).find('#type').val()
-		});
-
-		this.user.save({
-			success: function(model, response) {
-				Backbone.history.navigate('register/3');
-			}
-		});
-
-		this.screen = 3;
-		this.render();
+	showScreen: function(screen) {
+		this.$el.find('fieldset').hide();
+		this.$el.find('fieldset.step-'+ screen).show();
 	},
 
 	render: function() {
-		this.$el.html(this.template({screen: this.screen}));
+		this.$el.html(this.template());
 		return this;
 	},
 });

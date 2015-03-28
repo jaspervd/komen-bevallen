@@ -49,8 +49,8 @@ class UsersDAO extends DAO
         return array();
     }
 
-    public function register($email, $password, $mother, $partner, $photo_url, $duedate, $type) {
-        $sql = "INSERT INTO `kb_users` (`email`, `password`, `mother`, `partner`, `photo_url`, `duedate`, `type`) VALUES (:email, :password, :mother, :partner, :photo_url, :duedate, :type)";
+    public function register($email, $password, $mother, $partner, $photo_url, $duedate, $type, $group_id) {
+        $sql = "INSERT INTO `kb_users` (`email`, `password`, `mother`, `partner`, `photo_url`, `duedate`, `type`, `group_id`) VALUES (:email, :password, :mother, :partner, :photo_url, :duedate, :type, :group_id)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':email', $email);
         $stmt->bindValue(':password', Util::encrypt($password));
@@ -59,6 +59,7 @@ class UsersDAO extends DAO
         $stmt->bindValue(':photo_url', $photo_url);
         $stmt->bindValue(':duedate', $duedate);
         $stmt->bindValue(':type', $type);
+        $stmt->bindValue(':group_id', $group_id);
         if ($stmt->execute()) {
             return $this->selectById($this->pdo->lastInsertId());
         }

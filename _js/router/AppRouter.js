@@ -21,6 +21,7 @@ var AppRouter = Backbone.Router.extend({
     routes: {
         '': 'login',
         'login': 'login',
+        'register': 'register',
         'register/:id': 'register',
         'forgotpw': 'forgotpw',
         'overview': 'overview',
@@ -71,8 +72,13 @@ var AppRouter = Backbone.Router.extend({
     },
 
     register: function(id) {
-        this.registerView = new RegisterView({screen: id});
+        this.registerView = new RegisterView();
         this.render(this.registerView);
+        if(isNaN(id) || id === null) {
+            id = 1;
+        }
+        console.log(id);
+        this.registerView.showScreen(id);
 
         if(id < 3) {
             this.redirectIfLoggedIn();
