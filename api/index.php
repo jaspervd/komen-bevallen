@@ -100,8 +100,8 @@ $app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
     }
 });
 
-$app->post('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
-    if (!empty($_SESSION['komen_bevallen']['user']) && $id === $_SESSION['komen_bevallen']['user']['id']) {
+$app->post('/users/?', function () use ($app, $groupsDAO, $usersDAO) {
+    if (!empty($_SESSION['komen_bevallen']['user'])) {
         $post = $app->request->post();
         $imageMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
         if (empty($_FILES['photo']) || strlen($_FILES['photo']['tmp_name']) == 0) {
@@ -120,7 +120,7 @@ $app->post('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
             move_uploaded_file($_FILES['photo']['tmp_name'], $targetFile);
             $photo_url = str_replace(WWW_ROOT, '', $targetFile);
         }
-        $user = $usersDAO->updatePhoto($id, $photo_url);
+        $user = $usersDAO->updatePhoto($_SESSION['komen_bevallen']['user']['id'], $photo_url);
         return Util::json($user);
     }
     else {
