@@ -13,7 +13,7 @@ var ReliveView = Backbone.View.extend({
     },
 
     render: function() {
-        this.$el.html(this.template(this.collection.toJSON()));
+        this.$el.html(this.template({photos: this.collection.toJSON()}));
         return this;
     },
 });

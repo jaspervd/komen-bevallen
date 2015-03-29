@@ -54,7 +54,6 @@ if (!empty($_POST['signup'])) {
     if (strlen($_FILES['photo']['tmp_name']) == 0) {
         $errors['register']['photo'] = 'Gelieve een foto in te voegen.';
     } elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
-        $size = getimagesize($_FILES['photo']['tmp_name']);
         $targetFile = WWW_ROOT . 'upload' . DIRECTORY_SEPARATOR . $_FILES['photo']['name'];
         $pos = strrpos($targetFile, '.');
         $filename = substr($targetFile, 0, $pos);

@@ -41,10 +41,10 @@ class PhotosDAO extends DAO
         return array();
     }
 
-    public function selectByDay($day) {
-        $sql = "SELECT * FROM `kb_photos` WHERE `day` = :day";
+    public function selectByContenderId($contender_id) {
+        $sql = "SELECT * FROM `kb_photos` WHERE `contender_id` = :contender_id";
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':day', $day);
+        $stmt->bindValue(':contender_id', $contender_id);
         if ($stmt->execute()) {
             $photos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (!empty($photos)) {
@@ -55,13 +55,13 @@ class PhotosDAO extends DAO
         return array();
     }
 
-    public function insert($user_id, $group_id, $photo_url, $day) {
-        $sql = "INSERT INTO `kb_photos` (`user_id`, `group_id`, `photo_url`, `day`) VALUES (:user_id, :group_id, :photo_url, :day)";
+    public function insert($user_id, $group_id, $photo_url, $contender_id) {
+        $sql = "INSERT INTO `kb_photos` (`user_id`, `group_id`, `photo_url`, `contender_id`) VALUES (:user_id, :group_id, :photo_url, :contender_id)";
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':user_id', $user_id);
         $stmt->bindValue(':group_id', $group_id);
         $stmt->bindValue(':photo_url', $photo_url);
-        $stmt->bindValue(':day', $day);
+        $stmt->bindValue(':contender_id', $contender_id);
         if ($stmt->execute()) {
             return $this->selectById($this->pdo->lastInsertId());
         }

@@ -6,7 +6,7 @@ var Photo = Backbone.Model.extend({
         user_id: null,
         group_id: null,
         photo_url: undefined,
-        day: undefined
+        contender_id: undefined
     },
 
     urlRoot: Settings.API + '/photos'
