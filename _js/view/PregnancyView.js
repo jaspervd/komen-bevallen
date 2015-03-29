@@ -37,7 +37,7 @@ var PregnancyView = Backbone.View.extend({
                 cache: false,
                 contentType: false,
                 processData: false,
-                type: 'PUT',
+                type: 'POST',
                 success: function(data){
                     console.log('hip hip hoera');
                 }

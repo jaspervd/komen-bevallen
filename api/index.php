@@ -48,7 +48,6 @@ $app->get('/users/:id/?', function ($id) use ($usersDAO) {
 $app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
     if (!empty($_SESSION['komen_bevallen']['user']) && $id === $_SESSION['komen_bevallen']['user']['id']) {
         $post = $app->request->post();
-        $imageMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
         if (empty($post)) {
             $post = (array)json_decode($app->request()->getBody());
         }
@@ -60,22 +59,6 @@ $app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
         }
         if (empty($post['partner'])) {
             $post['partner'] = $_SESSION['komen_bevallen']['user']['partner'];
-        }
-        if (empty($_FILES['photo']) || strlen($_FILES['photo']['tmp_name']) == 0) {
-            $photo_url = $_SESSION['komen_bevallen']['user']['photo_url'];
-        }
-        elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
-            $targetFile = WWW_ROOT . 'upload' . DIRECTORY_SEPARATOR . $_FILES['photo']['name'];
-            $pos = strrpos($targetFile, '.');
-            $filename = substr($targetFile, 0, $pos);
-            $ext = substr($targetFile, $pos + 1);
-            $i = 0;
-            while (file_exists($targetFile)) {
-                $i++;
-                $targetFile = $filename . $i . '.' . $ext;
-            }
-            move_uploaded_file($_FILES['photo']['tmp_name'], $targetFile);
-            $photo_url = str_replace(WWW_ROOT, '', $targetFile);
         }
         if (empty($post['type'])) {
             $post['type'] = $_SESSION['komen_bevallen']['user']['type'];
@@ -108,7 +91,7 @@ $app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
         } else {
             $group_id = $_SESSION['komen_bevallen']['user']['group_id'];
         }
-        $user = $usersDAO->update($_SESSION['komen_bevallen']['user']['id'], $post['email'], $post['mother'], $post['partner'], $photo_url, $post['duedate'], $post['type'], $group_id);
+        $user = $usersDAO->update($_SESSION['komen_bevallen']['user']['id'], $post['email'], $post['mother'], $post['partner'], $post['duedate'], $post['type'], $group_id);
         return Util::json($user);
     }
     else {
@@ -116,6 +99,36 @@ $app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
         exit;
     }
 });
+
+$app->post('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
+    if (!empty($_SESSION['komen_bevallen']['user']) && $id === $_SESSION['komen_bevallen']['user']['id']) {
+        $post = $app->request->post();
+        $imageMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
+        if (empty($_FILES['photo']) || strlen($_FILES['photo']['tmp_name']) == 0) {
+            $photo_url = $_SESSION['komen_bevallen']['user']['photo_url'];
+        }
+        elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
+            $targetFile = WWW_ROOT . 'upload' . DIRECTORY_SEPARATOR . $_FILES['photo']['name'];
+            $pos = strrpos($targetFile, '.');
+            $filename = substr($targetFile, 0, $pos);
+            $ext = substr($targetFile, $pos + 1);
+            $i = 0;
+            while (file_exists($targetFile)) {
+                $i++;
+                $targetFile = $filename . $i . '.' . $ext;
+            }
+            move_uploaded_file($_FILES['photo']['tmp_name'], $targetFile);
+            $photo_url = str_replace(WWW_ROOT, '', $targetFile);
+        }
+        $user = $usersDAO->updatePhoto($id, $photo_url);
+        return Util::json($user);
+    }
+    else {
+        http_response_code(403);
+        exit;
+    }
+});
+
 
 // logout
 $app->delete('/users/:id/?', function ($id) {
