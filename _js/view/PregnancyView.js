@@ -32,7 +32,7 @@ var PregnancyView = Backbone.View.extend({
             var data = new FormData();
             data.append('photo', $photo);
             $.ajax({
-                url: Settings.API + '/users/' + self.user.id,
+                url: Settings.API + '/users/',
                 data: data,
                 cache: false,
                 contentType: false,
