@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Machine: localhost:8889
--- Gegenereerd op: 28 mrt 2015 om 17:55
+-- Gegenereerd op: 29 mrt 2015 om 13:45
 -- Serverversie: 5.5.38
 -- PHP-versie: 5.6.2
 
@@ -58,7 +58,7 @@ CREATE TABLE `kb_photos` (
   `user_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `photo_url` text NOT NULL,
-  `day` date NOT NULL
+  `contender_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
