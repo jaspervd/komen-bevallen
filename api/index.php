@@ -129,7 +129,6 @@ $app->post('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
     }
 });
 
-
 // logout
 $app->delete('/users/:id/?', function ($id) {
     if (!empty($_SESSION['komen_bevallen']['user']) && $_SESSION['komen_bevallen']['user']['id'] == $id) {

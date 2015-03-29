@@ -16,7 +16,7 @@ var DetailView = Backbone.View.extend({
 		this.model.on('reset sync', this.render);
 
 		this.photos = new Photos();
-		this.photos.urlRoot += '/' + this.options.contender_id;
+		this.photos.url += '/' + this.options.contender_id;
 		this.photos.fetch();
 		this.photos.on('reset sync', this.render);
 	},
