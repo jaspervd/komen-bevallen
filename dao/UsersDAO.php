@@ -67,6 +67,24 @@ class UsersDAO extends DAO
         return array();
     }
 
+    public function update($id, $email, $mother, $partner, $photo_url, $duedate, $type, $group_id) {
+        $sql = "UPDATE `kb_users` SET `email` = :email, `mother` = :mother, `partner` = :partner, `photo_url` = :photo_url, `duedate` = :duedate, `type` = :type, `group_id` = :group_id WHERE `id` = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':email', $email);
+        $stmt->bindValue(':mother', $mother);
+        $stmt->bindValue(':partner', $partner);
+        $stmt->bindValue(':photo_url', $photo_url);
+        $stmt->bindValue(':duedate', $duedate);
+        $stmt->bindValue(':type', $type);
+        $stmt->bindValue(':group_id', $group_id);
+        if ($stmt->execute()) {
+            return $this->selectById($id);
+        }
+
+        return array();
+    }
+
     public function checkExistingEmail($email) {
         $sql = "SELECT `id` FROM `kb_users` WHERE `email` = :email";
         $stmt = $this->pdo->prepare($sql);

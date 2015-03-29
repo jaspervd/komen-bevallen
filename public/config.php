@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(E_ALL);
 define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'classes' . DIRECTORY_SEPARATOR . 'Util.php';

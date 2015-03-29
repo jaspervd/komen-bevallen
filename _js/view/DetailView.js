@@ -27,31 +27,13 @@ var DetailView = Backbone.View.extend({
 
 	upload: function(e) {
 		e.preventDefault();
-		/*var self = this;
-		var input = this.$el.find('input')[0].files[0];
-		var fileReader = new FileReader();
-		fileReader.onloadend = function(e) {
-			var photo = new Photo({
-				'contender_id': self.options.contender_id,
-				'data': fileReader.result
-			});
-			photo.save();
-		};
-
-		fileReader.readAsDataURL(input);
-
-		var photo = new Photo({
-			'contender_id': this.options.contender_id,
-			'data': this.$el.find('input')[0].files[0]
-		});
-		photo.save();*/
 
 		var data = new FormData();
 		data.append('contender_id', this.options.contender_id);
 		data.append('photo', this.$el.find('input')[0].files[0]);
 
 		$.ajax({
-			url: Settings.API + '/photos',
+			url: Settings.API + '/users',
 			data: data,
 			cache: false,
 			contentType: false,

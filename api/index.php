@@ -31,15 +31,84 @@ $app->get('/me/?', function () use ($usersDAO) {
         $user = $usersDAO->selectById($_SESSION['komen_bevallen']['user']['id']);
         return Util::json($user);
     }
+    return Util::json(array());
+});
+
+$app->get('/users/:id/?', function ($id) use ($usersDAO) {
+    if (!empty($_SESSION['komen_bevallen']['user'])) {
+        $user = $usersDAO->selectById($id);
+        return Util::json($user);
+    }
     else {
         http_response_code(403);
         exit;
     }
 });
 
-$app->get('/users/:id/?', function ($id) use ($usersDAO) {
-    if (!empty($_SESSION['komen_bevallen']['user'])) {
-        $user = $usersDAO->selectById($id);
+$app->put('/users/:id/?', function ($id) use ($app, $groupsDAO, $usersDAO) {
+    if (!empty($_SESSION['komen_bevallen']['user']) && $id === $_SESSION['komen_bevallen']['user']['id']) {
+        $post = $app->request->post();
+        $imageMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
+        if (empty($post)) {
+            $post = (array)json_decode($app->request()->getBody());
+        }
+        if (empty($post['email']) || !filter_var($post['email'], FILTER_VALIDATE_EMAIL)) {
+            $post['email'] = $_SESSION['komen_bevallen']['user']['email'];
+        }
+        if (empty($post['mother'])) {
+            $post['mother'] = $_SESSION['komen_bevallen']['user']['mother'];
+        }
+        if (empty($post['partner'])) {
+            $post['partner'] = $_SESSION['komen_bevallen']['user']['partner'];
+        }
+        if (empty($_FILES['photo']) || strlen($_FILES['photo']['tmp_name']) == 0) {
+            $photo_url = $_SESSION['komen_bevallen']['user']['photo_url'];
+        }
+        elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
+            $targetFile = WWW_ROOT . 'upload' . DIRECTORY_SEPARATOR . $_FILES['photo']['name'];
+            $pos = strrpos($targetFile, '.');
+            $filename = substr($targetFile, 0, $pos);
+            $ext = substr($targetFile, $pos + 1);
+            $i = 0;
+            while (file_exists($targetFile)) {
+                $i++;
+                $targetFile = $filename . $i . '.' . $ext;
+            }
+            move_uploaded_file($_FILES['photo']['tmp_name'], $targetFile);
+            $photo_url = str_replace(WWW_ROOT, '', $targetFile);
+        }
+        if (empty($post['type'])) {
+            $post['type'] = $_SESSION['komen_bevallen']['user']['type'];
+        }
+        if(!empty($post['duedate'])) {
+            $duedate = strtotime($post['duedate']);
+            if ($duedate && date('N', $duedate) > 4) {
+             // if weekday is later than 4 (4 being Thursday)
+                $post['duedate'] = $_SESSION['komen_bevallen']['user']['duedate'];
+            }
+        } else {
+            $post['duedate'] = $_SESSION['komen_bevallen']['user']['duedate'];
+        }
+        if($post['duedate'] !== $_SESSION['komen_bevallen']['user']['duedate']) {
+            $groups = $groupsDAO->selectByWeek(date('W', $duedate));
+            $group = [];
+            if(!empty($groups)) {
+                foreach($groups as $key => $value) {
+                    $dates = array_column($value['users'], 'duedate');
+                    if(!in_array(date('Y-m-d', $duedate), $dates)) {
+                        $group = $value;
+                        break;
+                    }
+                }
+            }
+            if(empty($group)) {
+                $group = $groupsDAO->insert(date('W', $duedate));
+            }
+            $group_id = $group['id'];
+        } else {
+            $group_id = $_SESSION['komen_bevallen']['user']['group_id'];
+        }
+        $user = $usersDAO->update($_SESSION['komen_bevallen']['user']['id'], $post['email'], $post['mother'], $post['partner'], $photo_url, $post['duedate'], $post['type'], $group_id);
         return Util::json($user);
     }
     else {
@@ -125,12 +194,13 @@ $app->post('/photos/?', function () use ($app, $usersDAO, $photosDAO) {
 
         $errors = array();
         $imageMimeTypes = array('image/jpeg', 'image/png', 'image/gif');
-        if(empty($post['contender_id']) || is_nan($post['contender_id']) || empty($usersDAO->selectById($post['contender_id']))) {
+        if (empty($post['contender_id']) || is_nan($post['contender_id']) || empty($usersDAO->selectById($post['contender_id']))) {
             $errors['contender_id'] = 'Dit is geen geldig ID.';
         }
         if (strlen($_FILES['photo']['tmp_name']) == 0) {
             $errors['photo'] = 'Gelieve een foto in te voegen.';
-        } elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
+        }
+        elseif (in_array($_FILES['photo']['type'], $imageMimeTypes)) {
             $targetFile = WWW_ROOT . 'upload' . DIRECTORY_SEPARATOR . $_FILES['photo']['name'];
             $pos = strrpos($targetFile, '.');
             $filename = substr($targetFile, 0, $pos);
@@ -140,7 +210,8 @@ $app->post('/photos/?', function () use ($app, $usersDAO, $photosDAO) {
                 $i++;
                 $targetFile = $filename . $i . '.' . $ext;
             }
-        } else {
+        }
+        else {
             $errors['photo'] = 'De "foto" die je probeerde up te loaden, is geen jpeg, png of gif bestand.';
         }
 

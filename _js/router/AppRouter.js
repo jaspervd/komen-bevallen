@@ -79,7 +79,6 @@ var AppRouter = Backbone.Router.extend({
         if(isNaN(id) || id === null) {
             id = 1;
         }
-        console.log(id);
         this.registerView.showScreen(id);
 
         if(id < 3) {
@@ -105,7 +104,7 @@ var AppRouter = Backbone.Router.extend({
 
     pregnancy: function() {
         if (!$.isEmptyObject(this.user)) {
-            this.pregnancyView = new PregnancyView();
+            this.pregnancyView = new PregnancyView({model: this.user});
             this.render(this.pregnancyView);
         }
 
@@ -114,7 +113,6 @@ var AppRouter = Backbone.Router.extend({
 
     rate: function(id) {
         if (!$.isEmptyObject(this.user)) {
-            console.log(id, this.user.get('id'));
             this.rateView = new RateView({contender_id: id});
             this.render(this.rateView);
 

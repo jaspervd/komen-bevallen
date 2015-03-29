@@ -1,26 +1,39 @@
 <article class="settings">
     <header>
-        <h1>Settings</h1>
+        <h1>Mijn Zwangerschap</h1>
         <a href="#overview">Sluiten</a>
     </header>
     <form method="post" action="#settings" autocomplete="off">
     	<fieldset>
-    		<legend>Settings</legend>
             <p>
-            	<label for="email">E-mailadres</label>
-            	<input type="email" name="email" id="email" value="{{email}}" />
+                <label for="email">E-mailadres</label>
+                <input type="email" name="email" id="email" value="{{email}}" />
             </p>
             <p>
-                <label for="oldpassword">Oud wachtwoord</label>
-                <input type="password" required pattern=".{2,}" name="oldpassword" id="oldpassword" />
+                <label for="photo">Foto</label>
+                <input type="file" name="photo" id="photo" accept="image/*" capture="camera" />
             </p>
             <p>
-                <label for="newpassword">Nieuw wachtwoord</label>
-                <input type="password" required pattern=".{2,}" name="newpassword" id="newpassword" />
+                <label for="type">Situatie</label>
+                <input type="text" list="type_list" required pattern=".{2,}" name="type" id="type" value="{{type}}" />
+                <datalist id="type_list">
+                    <option value="Tienermoeder"></option>
+                    <option value="Marginaal"></option>
+                    <option value="Niet gekende vader"></option>
+                    <option value="Homoseksueel koppel"></option>
+                </datalist>
             </p>
             <p>
-                <label for="newpasswordconfirm">Nieuw wachtwoord herhalen</label>
-                <input type="password" required pattern=".{2,}" name="passwordconfirm" id="newpasswordconfirm" />
+                <label for="mother">Moeder</label>
+                <input type="text" required pattern=".{2,}" name="mother" id="mother" value="{{mother}}" />
+            </p>
+            <p>
+                <label for="partner">Partner</label>
+                <input type="text" required pattern=".{2,}" name="partner" id="partner" value="{{partner}}" />
+            </p>
+            <p>
+                <label for="duedate">Allez, voor wanneer is 't?</label>
+                <input type="date" required name="duedate" id="duedate" value="{{duedate}}" />
             </p>
             <p>
                 <input type="submit" name="settings" value="Bewerken" />
