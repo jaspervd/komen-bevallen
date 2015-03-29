@@ -15,7 +15,7 @@ require_once ('config.php');
 		<form method="post" action="#" autocomplete="off">
 			<fieldset>
 				<?php
-				if (empty($_SESSION['komen_bevallen']['admin'])) { ?>
+				if (empty($_SESSION['komen_bevallen']['user']['admin'])) { ?>
 				<p>
 					<label for="username">Gebruikersnaam</label>
 					<input type="text" name="username" id="username" required placeholder="Gebruikersnaam" />

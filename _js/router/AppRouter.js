@@ -113,7 +113,7 @@ var AppRouter = Backbone.Router.extend({
 
     rate: function(id) {
         if (!$.isEmptyObject(this.user)) {
-            this.rateView = new RateView({contender_id: id});
+            this.rateView = new RateView({model: this.user, contender_id: id});
             this.render(this.rateView);
 
             if(id === this.user.get('id')) {

@@ -7,9 +7,9 @@
         {{#if finished}}
         <li><a href="#result">resultaat</a></li>
         {{else}}
-        <li><a href="#rate"{{#if notThisWeek}} class="disabled"{{/if}}>beoordelen</a></li>
+        <li><a href="#rate/{{contender_id}}"{{#unless thisWeek}} class="disabled"{{/unless}}>beoordelen</a></li>
         {{/if}}
-        <li><a href="#contenders"{{#if notThisWeek}} class="disabled"{{/if}}>deelnemers</a></li>
+        <li><a href="#contenders"{{#unless thisWeek}} class="disabled"{{/unless}}>deelnemers</a></li>
         <li><a href="#relive">herbeleef</a></li>
         <li><a href="#soundboard">soundboard</a></li>
         <li><a href="#logout">logout</a></li>
