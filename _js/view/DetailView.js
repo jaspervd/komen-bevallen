@@ -33,7 +33,7 @@ var DetailView = Backbone.View.extend({
 		data.append('photo', this.$el.find('input')[0].files[0]);
 
 		$.ajax({
-			url: Settings.API + '/users',
+			url: Settings.API + '/users/',
 			data: data,
 			cache: false,
 			contentType: false,
