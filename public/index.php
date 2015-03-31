@@ -10,6 +10,10 @@ require_once ('config.php'); ?>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 </head>
 <body>
+    <header>
+        <div class="headerbar"></div>
+        <h1 class="logo">Komen bevallen</h1>
+    </header>
 	<div class="container"></div>
 	<script type="text/javascript" src="js/vendor.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>

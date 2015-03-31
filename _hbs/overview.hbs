@@ -1,17 +1,17 @@
-<header>
-    <h1>Komen bevallen</h1>
-</header>
-<nav>
-    <ul>
-        <li><a href="#pregnancy">mijn zwangerschap</a></li>
-        {{#if finished}}
-        <li><a href="#result">resultaat</a></li>
-        {{else}}
-        <li><a href="#rate/{{contender_id}}"{{#unless thisWeek}} class="disabled"{{/unless}}>beoordelen</a></li>
-        {{/if}}
-        <li><a href="#contenders"{{#unless thisWeek}} class="disabled"{{/unless}}>deelnemers</a></li>
-        <li><a href="#relive">herbeleef</a></li>
-        <li><a href="#soundboard">soundboard</a></li>
-        <li><a href="#logout">logout</a></li>
-    </ul>
-</nav>
+<div class="overview">
+    <a href="#" class="help">?</a>
+    <nav>
+        <ul>
+            <li><a href="#contenders"{{#if notThisWeek}} disabled"{{/if}}>deelnemers</a></li>
+            <li><a href="#relive">fotogallerij</a></li>
+            {{#if finished}}
+            <li><a href="#result">resultaat</a></li>
+            {{else}}
+            <li><a href="#rate"{{#if notThisWeek}} class="disabled"{{/if}}>beoordelen</a><span class="notificationmbr">1</span></li>
+            {{/if}}
+            <li><a href="#soundboard">soundboard</a></li>
+            <li><a href="#pregnancy">account instellingen</a></li>
+            <li><a href="#logout">logout</a></li>
+        </ul>
+    </nav>
+</div>

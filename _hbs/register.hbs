@@ -1,57 +1,76 @@
-<form method="post" action="#register/{{screen}}" enctype="multipart/form-data">
-	<fieldset class="step-1">
-		<p>
-         <label for="email">E-mailadres</label>
-         <input type="email" required name="email" id="email" placeholder="john@doe.com" />
-     </p>
-     <p>
-         <label for="password">Wachtwoord</label>
-         <input type="password" required pattern=".{2,}" name="password" id="password" />
-     </p>
-     <p>
-        <label for="passwordconfirm">Herhaal wachtwoord</label>
-        <input type="password" required pattern=".{2,}" name="passwordconfirm" id="passwordconfirm" />
-    </p>
-    <p>
-       <input type="submit" name="register" value="Registreer" />
-       <a href="#login" class="button">Terug</a>
-   </p>
-</fieldset>
-<fieldset class="step-2">
-    <p>
-        <label for="photo">Foto</label>
-        <input type="file" required name="photo" id="photo" accept="image/*" capture="camera" />
-    </p>
-    <p>
-        <label for="type">Situatie</label>
-        <input type="text" list="type_list" required pattern=".{2,}" name="type" id="type" />
-        <datalist id="type_list">
-            <option value="Tienermoeder"></option>
-            <option value="Marginaal"></option>
-            <option value="Niet gekende vader"></option>
-            <option value="Homoseksueel koppel"></option>
-        </datalist>
-    </p>
-    <p>
-        <label for="mother">Moeder</label>
-        <input type="text" required pattern=".{2,}" name="mother" id="mother" />
-    </p>
-    <p>
-        <label for="partner">Partner</label>
-        <input type="text" required pattern=".{2,}" name="partner" id="partner" />
-    </p>
-    <p>
-        <label for="duedate">Allez, voor wanneer is 't?</label>
-        <input type="date" required name="duedate" id="duedate" />
-    </p>
-    <p>
-       <input type="submit" name="signup" value="Inschrijven" />
-       <a href="#register/1" class="button">Terug</a>
-   </p>
-</fieldset>
-<fieldset class="step-3">
-    <p>
-        Gefeliciteerd!
-    </p>
-</fieldset>
+<form method="post" action="#register/{{screen}}" enctype="multipart/form-data" class="register">
+    <div class="dummy">&nbsp;</div>
+    <fieldset class="step-1">
+        <legend>Jouw Zwangerschap 1/2</legend>
+        <p>
+            <label for="email">E-mailadres</label><div class="error">Vul een geldig email in</div>
+            <input type="email" required name="email" id="email" placeholder="john@doe.com" />
+
+        </p>
+
+        <p>
+            <label for="password">Wachtwoord</label><div class="error">Vul een wachtwoord in</div>
+            <input type="password" required pattern=".{2,}" name="password" id="password" />
+        </p>
+        <p>
+            <label for="passwordconfirm">Herhaal wachtwoord</label><div class="error onjuist">Onjuist</div>
+            <input type="password" required pattern=".{2,}" name="passwordconfirm" id="passwordconfirm" />
+        </p>
+        <p>
+            <a href="#login" class="button">Terug</a>
+            <input type="submit" name="register" value="Registreer" />
+            <div class="dummy">&nbsp;</div>
+        </p>
+    </fieldset>
+    <fieldset class="step-2">
+        <legend>Jouw Zwangerschap 2/2</legend>
+
+        <p>
+            <label for="photo">Jouw foto</label><div class="error">Kies een foto.</div>
+            <div class="fileinputs">
+                <input type="file" required name="photo" id="photo" accept="image/*" capture="camera" />
+                <div class="fakefile"></div>
+
+            </div>
+        </p>
+        <p>
+            <label for="type">Situatie</label><div class="error">Selecteer een situatie.</div>
+            <input type="text" list="type_list" required pattern=".{2,}" name="type" id="type" />
+            <datalist id="type_list">
+                <option value="Tienermoeder"></option>
+                <option value="Marginaal"></option>
+                <option value="Niet gekende vader"></option>
+                <option value="Homoseksueel koppel"></option>
+            </datalist>
+        </p>
+        <p>
+            <label for="mother">Moeder</label><div class="error">Vul een moeder in.</div>
+            <input type="text" required pattern=".{2,}" name="mother" id="mother" />
+        </p>
+        <p>
+            <label for="partner">Partner</label><div class="error">Vul een partner in.</div>
+            <input type="text" required pattern=".{2,}" name="partner" id="partner" />
+        </p>
+        <p>
+            <label for="duedate">Allez, voor wanneer is 't?</label><div class="error">Selecteer een datum</div>
+            <input type="date" required name="duedate" id="duedate" />
+        </p>
+        <p>
+            <a href="#register/1" class="button">Terug</a>
+            <input type="submit" name="signup" value="Inschrijven" />
+            <div class="dummy">&nbsp;</div>
+
+        </p>
+    </fieldset>
+    <fieldset class="step-3">
+
+        <legend>Registratie geslaagd</legend>
+        <p>
+            <img src="assets/images/ooievaar.svg" alt="ooievaar" />
+            <span class="proficiat">Proficiat!</span>
+            <span class="text">Je bent nu in ingeschreven!</span>
+            <a href="#overview">Home</a>
+            <a href="#deelnemers">Deelnemers</a>
+        </p>
+    </fieldset>
 </form>

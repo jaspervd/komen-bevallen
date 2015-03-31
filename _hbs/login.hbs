@@ -1,18 +1,18 @@
-<form method="post" action="#login">
-	<fieldset>
-		<legend>Login</legend>
-		<p>
-			<label for="email">E-mailadres</label>
-			<input type="email" autofocus required pattern=".{2,}" name="email" id="email" placeholder="john@doe.com" />
-		</p>
-		<p>
-			<label for="password">Wachtwoord</label>
-			<input type="password" required pattern=".{2,}" name="password" id="password" />
-		</p>
-		<p>
-			<input type="submit" name="login" value="Inloggen" />
-			<a href="#register/1" class="button">Registreer</a>
-			<a href="#forgotpw">wachtwoord vergeten?</a>
-		</p>
-	</fieldset>
+<form method="post" action="#login" class="login">
+    <fieldset>
+        <legend>Login</legend>
+        <p>
+            <label for="email">E-mailadres</label>
+            <span class="mailicon"><img src="assets/images/mailicon.png" alt="mailicon" /></span><input type="email" autofocus required pattern=".{2,}" name="email" id="email" placeholder="john@doe.com" />
+        </p>
+        <p>
+            <label for="password">Wachtwoord</label>
+            <span class="wachtwoordicon"><img src="assets/images/wachtwoordicon.png" alt="wachtwoordicon" /></span><input type="password" required pattern=".{2,}" name="password" id="password" />
+        </p>
+        <p>
+            <a href="#register/1" class="button">Registreer</a>
+            <input type="submit" name="login" value="Inloggen" />
+            <a href="#forgotpw">wachtwoord vergeten?</a>
+        </p>
+    </fieldset>
 </form>

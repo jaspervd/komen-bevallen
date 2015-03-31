@@ -1,7 +1,964 @@
 body {
-	font-size: 62.5%;
+  font-size: 62.5%;
+  background-image: url(../../assets/images/bg.png);
 }
 
 .hide {
-	display: none;
+  display: none;
 }
+
+.headerbar{
+  width: 100%;
+  height: 50px;
+  background-color: #a1dad9;
+}
+.logo{
+  height: 300px;
+  width: 360px;
+  background: url(../../assets/images/logo.png) no-repeat;
+  display: block;
+  margin: -50px auto 50px auto;
+  text-indent: -10000px;
+}
+.dummy{
+  clear: both;
+  width:0;
+  height:0;
+}
+.error{
+  width: 360px;
+  height: 50px;
+  -moz-border-radius-topright: 50px;
+  border-top-right-radius: 50px;
+  -moz-border-radius-topleft: 50px;
+  border-top-left-radius: 50px;
+  text-align: center;
+  background-color: #fd5f5f;
+  float: right;
+  color: white;
+  font-size: 3em;
+  letter-spacing: 0.06em;
+  padding: 20px 20px 5px 20px;
+  margin-right: 10%;
+  font-family: "VAG Rounded Std", helvetica, sans-serif;
+  margin-top: -70px;
+}
+
+
+@font-face {
+  font-family: "Amatic SC";
+  src: url('../../assets/fonts/amatic/AmaticSC-Regular.eot');
+  src: url('../../assets/fonts/amatic/AmaticSC-Regular.eot#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/amatic/AmaticSC-Regular.woff') format('woff'),
+  url('../../assets/fonts/amatic/AmaticSC-Regular.ttf') format('truetype'),
+  url('../../assets/fonts/amatic/AmaticSC-Regular.svg#amaticsc-regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Amatic";
+  src: url('../../assets/fonts/amaticBold/Amatic-Bold-webfont.eot');
+  src: url('../../assets/fonts/amaticBold/Amatic-Bold-webfont.eot#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/amaticBold/Amatic-Bold-webfont.woff') format('woff'),
+  url('../../assets/fonts/amaticBold/Amatic-Bold-webfont.ttf') format('truetype'),
+  url('../../assets/fonts/amaticBold/Amatic-Bold-webfont.svg#amatic-bold-webfont') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VAG Rounded Std";
+  src: url('../../assets/fonts/vag/VAGRoundedStd-Bold.eot');
+  src: url('../../assets/fonts/vag/VAGRoundedStd-Bold.eot#iefix') format('embedded-opentype'),
+  url('../../assets/fonts/vag/VAGRoundedStd-Bold.woff') format('woff'),
+  url('../../assets/fonts/vag/VAGRoundedStd-Bold.ttf') format('truetype'),
+  url('../../assets/fonts/vag/VAGRoundedStd-Bold.svg#vagroundedstd)bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+fieldset{
+  border: none;
+  p{
+    margin-left: 60px;
+  }
+}
+
+
+.welkom{
+
+  .button{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 11em;
+    border: none;
+    color: #cb6262;
+    padding: 30px 0 0 110px;
+    background: url(../../assets/images/registreerbtn.png) no-repeat;
+    text-decoration: none;
+    width: 305px;
+    height: 208px;
+    margin: 20px auto 0 auto;
+    display: block;
+  }
+
+  .largelogo{
+    background: url(../../assets/images/largelogo.png);
+    width: 539px;
+    height: 462px;
+    display: block;
+    margin: -350px auto 50px auto;
+  }
+
+  h1{
+    font-family: "Amatic SC", helvetica, sans-serif;
+    background: url(../../assets/images/welkombg.png) no-repeat;
+    width: 609px;
+    height: 152px;
+    font-size: 12em;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  ul{
+    list-style: none;
+    margin: 100px 0 0 20px;
+
+    .pink{
+      color: #f9aaaa;
+    }
+
+    li{
+
+      color: #a1dad9;
+      font-family: "VAG Rounded Std", Helvetica, sans-serif;
+      font-size: 9em;
+      line-height: 2em;
+      display: block;
+      width: 90%;
+      float: left;
+      margin-bottom: 80px;
+      text-align: center;
+
+      img{
+        float: right;
+
+
+        &[alt="koppels"]{
+          margin-top: -20px;
+          height: 167px;
+        }
+
+        &[alt="bevallingen"]{
+          margin-top: -20px;
+          height: 231px;
+        }
+
+        &[alt="winnaar"]{
+          height: 138px;
+        }
+      }
+
+      .pink{
+        background-color: #f9aaaa;
+        color: white;
+      }
+
+      span{
+        border-radius: 90px;
+        font-size: 1.5em;
+        height: 155px;
+        width: 160px;
+        color: white;
+        background-color: #a1dad9;
+        display: block;
+        text-align: center;
+        padding-top: 5px;
+        float: left;
+
+      }
+
+    }
+  }
+}
+
+
+.login{
+  legend{
+    font-family: "Amatic SC", helvetica, sans-serif;
+    font-size: 11.1em;
+    text-align: center;
+    background: url(../../assets/images/titelbg.png) no-repeat;
+    width: 960px;
+    height: 165px;
+    display: block;
+    margin-bottom: 40px;
+  }
+
+  label{
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    color: #74a8a7;
+    font-size: 6em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    display:block;
+    margin: 50px 0 20px 0;
+
+  }
+
+  input[type="email"], input[type="password"]{
+    height: 100px;
+    width: 75%;
+    padding: 0 20px;
+    font-size: 4.2em;
+    display: block;
+    border: 20px solid #bbe4e3;
+    font-size: 6em;
+    &:focus{
+      outline:none;
+    }
+  }
+
+  input[name="login"]{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 10em;
+    border: none;
+    color: #cb6262;
+    padding: 20px;
+    background: url(../../assets/images/registreerbtn.png) no-repeat;
+    text-decoration: none;
+    width: 375px;
+    height: 198px;
+    float: left;
+    margin: 80px 0 50px 0;
+
+  }
+
+
+  .button{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 11em;
+    border: none;
+    color: #74a8a7;
+    opacity: 0.8;
+    padding: 30px 0 0 50px;
+    background: url(../../assets/images/vorigebtn.png) no-repeat;
+    text-decoration: none;
+    width: 365px;
+    height: 208px;
+    display: block;
+    float: left;
+    margin: 80px 40px 50px 0;
+  }
+
+
+  .mailicon{
+    background-color: #bbe4e3;
+    padding: 47px 10px 48px 25px;
+    height: 45px;
+    width: 59px;
+    display: block;
+    float: left;
+  }
+
+  .wachtwoordicon{
+    background-color: #bbe4e3;
+    padding: 45px 5px 49px 32px;
+    height: 45px;
+    width: 59px;
+    display: block;
+    float: left;
+  }
+
+  a[href="#forgotpw"]{
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    font-size: 8em;
+    text-align: center;
+    text-decoration: none;
+    color: #d3d3d3;
+    display: block;
+    width: 90%;
+  }
+}
+
+.register{
+  legend{
+    font-family: "Amatic SC", helvetica, sans-serif;
+    font-size: 11.1em;
+    text-align: center;
+  }
+
+
+  label{
+    font-family: "Amatic", helvetica, sans-serif;
+    color: #a7dcdb;
+    font-size: 8em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    display:block;
+    margin: 50px 0 20px 0;
+
+    &[for="email"], &[for="mother"], &[for="duedate"]{
+      color: #f9aaaa;
+    }
+
+    &[for="photo"]{
+      height: 230px;
+      width: 350px;
+      background-color: white;
+      border: 4px solid #a7dcdb;
+      display:block;
+      text-align: center;
+      padding-top:120px;
+      margin: 0 auto;
+    }
+    &[for="type"]{
+      margin-top: -50px;
+    }
+  }
+
+  input[type="file"]{
+
+    position: relative;
+    text-align: right;
+    z-index: 2;
+    margin-right: 150px;
+    font-size: 3em;
+  }
+
+  input[list="type_list"]{
+    background: url(../../assets/images/downbtnblue.png) no-repeat right;
+
+  }
+
+  input[name="duedate"]{
+    background: url(../../assets/images/downbtnpink.png) no-repeat right;
+  }
+
+  .fileinputs {
+    position: relative;
+    display: block;
+    width: 80%;
+  }
+
+  .fakefile {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+    width: 80%;
+    height: 50px;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    display: block;
+    font-size: 7em;
+
+  }
+
+  input[type="email"], input[name="mother"], input[name="duedate"]{
+    height: 125px;
+    width: 80%;
+    margin-left: 50px;
+    padding: 0 20px;
+    font-size: 4.2em;
+    display: block;
+    border: 3px solid #f9aaaa;
+    background-color: white;
+  }
+
+
+
+  input[type="password"], input[name="partner"], input[name="type"]{
+    height: 125px;
+    width: 80%;
+    margin-left: 50px;
+    padding: 0 20px;
+    font-size: 4.2em;
+    display: block;
+    border: 3px solid #a7dcdb;
+    background-color: white;
+  }
+
+
+
+
+  input[name="register"], input[name="signup"], a[href="#deelnemers"]{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 10em;
+    border: none;
+    color: #cb6262;
+    padding: 20px;
+    background: url(../../assets/images/registreerbtn.png) no-repeat;
+    text-decoration: none;
+    width: 375px;
+    height: 198px;
+    float: left;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+  }
+
+
+  .button, a[href="#overview"]{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 10em;
+    border: none;
+    background: url(../../assets/images/vorigebtn.png) no-repeat;
+    display: block;
+    width: 249px;
+    height: 158px;
+    text-decoration: none;
+    float: left;
+    padding: 40px 0 0 120px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: #74a8a7;
+    margin-right: 40px;
+    opacity: 0.7;
+  }
+
+  a[href="#overview"], a[href="#deelnemers"]{
+    margin-top: 160px;
+  }
+
+  a[href="#deelnemers"]{
+    padding: 40px 0 0 50px;
+    width: 325px;
+    height: 158px;
+  }
+
+
+
+
+  img[alt="ooievaar"]{
+    width: 40%;
+    margin-left: 200px;
+    margin-top: 50px;
+    display: block;
+  }
+
+  .text{
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    font-size: 6em;
+    color: #faacac;
+    text-align: center;
+    margin-left: 50px;
+  }
+
+  .proficiat{
+    background: url(../../assets/images/proficiatbg.png) no-repeat;
+    text-align: center;
+    font-family: "Amatic SC", helvetica, sans-serif;
+    font-size: 15em;
+    height: 171px;
+    width: 614px;
+    display: block;
+    margin: 40px 0 50px 80px;
+  }
+
+  .onjuist{
+    width: 200px;
+  }
+
+
+}
+
+.overview{
+
+  .help{
+    width: 115px;
+    height: 112px;
+    text-align: center;
+    border-radius: 50%;
+    border: solid 15px #a1dad9;
+    padding: 8px 0 0 5px;
+    color: #a1dad9;
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    font-size: 10em;
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    right: 10%;
+    top: 5%;
+    position: absolute;
+  }
+
+  li{
+    position: relative;
+  }
+
+  .notificationmbr{
+    width: 100px;
+    height: 90px;
+    position: absolute;
+    top: 430px;
+    left: 270px;
+    text-align: center;
+    border-radius: 50%;
+    border: solid 10px #a1dad9;
+    background-color: white;
+    color: #a1dad9;
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    font-size: 8em;
+    display: block;
+    text-decoration: none;
+    font-weight: 600;
+    padding-top: 10px;
+    z-index: 3;
+  }
+
+  ul{
+    list-style: none;
+    display: block;
+    margin: 50px 0 0 30px;
+
+  }
+  a[href="#contenders"]{
+    background: url(../../assets/images/deelnemersicon.svg) no-repeat;
+    height: 98px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 265px;
+    margin: 50px 80px 80px 0;
+
+  }
+  a[href="#relive"]{
+    background: url(../../assets/images/gallerijicon.svg) no-repeat;
+    height: 98px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 265px;
+    margin: 50px 0 80px 0;
+
+  }
+  a[href="#logout"]{
+    background: url(../../assets/images/uitloggenicon.svg) no-repeat;
+    height: 98px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 265px;
+
+
+  }
+  a[href="#pregnancy"]{
+    background: url(../../assets/images/settingsicon.svg) no-repeat;
+    height: 143px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 220px;
+    margin: 0 80px 80px 0;
+
+  }
+
+  a[href="#rate"]{
+    background: url(../../assets/images/beoordelenicon.svg) no-repeat;
+    height: 82px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 190px;
+    margin: 0 80px 80px 0;
+
+  }
+
+  a[href="#result"]{
+    background: url(../../assets/images/resultaaticon.svg) no-repeat;
+    height: 82px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 190px;
+    margin: 0 80px 80px 0;
+
+  }
+
+  a[href="#soundboard"]{
+    background: url(../../assets/images/soundboardicon.svg) no-repeat;
+    height: 82px;
+    width: 366px;
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    font-size: 4.5em;
+    float: left;
+    text-align: center;
+    padding-top: 190px;
+    margin-bottom: 80px;
+  }
+
+  header{
+    h1{
+      text-indent: -10000px;
+    }
+  }
+}
+
+.contenders{
+  h1{
+    font-family: "Amatic SC", helvetica, sans-serif;
+    font-size: 12em;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .info{
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    font-size: 5em;
+    color: #86c1c0;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  li{
+    width: 40%;
+    float: left;
+    display: block;
+    margin-left: 10px;
+    margin-right: 80px;
+
+    span.active{
+      border-color: #f9acac;
+      color: #f9acac;
+    }
+
+    .date{
+      color: #a1dad9;
+      font-size: 4.5em;
+      font-family: "VAG Rounded Std", helvetica, sans-serif;
+      text-align: center;
+      background-color: white;
+      border-top-left-radius: 90px;
+      border-top-right-radius: 90px;
+      -moz-border-radius-topleft: 90px;
+      -moz-border-radius-topright: 90px;
+      height: 0;
+      width: 80%;
+      padding: 20px 0 70px 0;
+      display: block;
+      border: solid 15px #a1dad9;
+      margin: 0 0 -20px 35px;
+    }
+
+    a{
+      text-decoration: none;
+
+      .active{
+        border-color: #f9acac;
+        background-color: #f9acac;
+      }
+
+      img{
+        width: 100%;
+        border: solid 15px #a1dad9;
+        margin-right: 20px;
+        display: block;
+
+
+      }
+
+      p{
+        color: white;
+        font-size: 4em;
+        font-family: "VAG Rounded Std", helvetica, sans-serif;
+        text-align: center;
+        background-color: #a1dad9;
+        height: 10px;
+        width: 100%;
+        padding: 10px 0 90px 0;
+        display: block;
+        border: solid 15px #a1dad9;
+        margin-top: -20px;
+      }
+    }
+  }
+
+}
+
+.result{
+
+  .button{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 11em;
+    border: none;
+    color: #cb6262;
+    padding: 30px 0 0 110px;
+    background: url(../../assets/images/registreerbtn.png) no-repeat;
+    text-decoration: none;
+    width: 305px;
+    height: 208px;
+    margin: 100px auto 50px auto;
+    display: block;
+  }
+
+  .kroon{
+    width: 254px;
+    height: 155px;
+    background: url(../../assets/images/kroonicon.svg) no-repeat;
+    display: block;
+    margin: -40px auto 0 auto;
+  }
+
+  .title{
+    h1{
+      font-family: "Amatic SC", helvetica, sans-serif;
+      font-size: 11.1em;
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+
+  .winnaar{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    z-index: 0;
+    position: relative;
+    margin-bottom: 50px;
+
+    header{
+      h1{
+        font-family: "VAG Rounded Std", helvetica, sans-serif;
+        color: #a1dad9;
+        text-align: center;
+        font-weight: 200;
+        font-size: 9em;
+        padding-top: 20px;
+        border-radius: 90px;
+        width: 90%;
+        margin: 0 auto;
+        display: block;
+        height: 120px;
+        background-color: white;
+        z-index: 5;
+        border: 15px solid #a1dad9;
+        z-index: 1;
+        top: 0;
+      }
+
+    }
+
+    img{
+      width: 100%;
+      border-radius: 90px;
+      z-index: -1;
+      border: 15px solid #a1dad9;
+      margin-left: -15px;
+      z-index: -1;
+      position: absolute;
+      top: 80px;
+    }
+
+    p{
+      width: 100%;
+      border-bottom-left-radius: 90px;
+      border-bottom-right-radius: 90px;
+      display: block;
+      background-color: #a1dad9;
+      color: white;
+      font-size: 7em;
+      text-align: center;
+      height: 280px;
+      border: 15px solid #a1dad9;
+      margin-left: -15px;
+      z-index: 1;
+      padding-top: 20px;
+      margin-top: 390px;
+      font-family: "VAG Rounded Std", helvetica, sans-serif;
+
+      span{
+        display: block;
+        width: 100%;
+        font-size: 2.5em;
+        margin-bottom: -30px;
+      }
+    }
+
+  }
+
+
+
+  .ranking{
+
+    ol{
+      list-style-type: none;
+
+      margin: 0;
+      padding: 0;
+      counter-reset: li-counter;
+
+      .pink{
+        color: #f9aaaa;
+        border-color: #fab4b4;
+      }
+
+      li{
+
+
+        width: 80%;
+        margin: 0 auto 40px auto;
+        border: 15px solid #a1dad9;
+        height: 100px;
+        -moz-border-radius: 90px;
+        border-radius: 90px;
+        text-align: center;
+        padding-top: 20px;
+        position: relative;
+
+
+
+        span{
+          background-color: #a1dad9;
+          color: white;
+          height: 110px;
+          padding: 30px 50px 0 60px;
+          margin-top: -30px;
+          font-size: 1.2em;
+          width: 50px;
+          display: block;
+          float: left;
+          -moz-border-left-radius: 90px;
+          border-top-left-radius: 90px;
+          border-bottom-left-radius: 90px;
+        }
+
+        span.pink{
+          color: white;
+          background-color: #fab4b4;
+        }
+
+        a{
+          font-size: 7em;
+          font-family: "VAG Rounded Std", helvetica, sans-serif;
+          text-decoration: none;
+          color: #a1dad9;
+        }
+
+
+
+      }
+    }
+
+  }
+}
+
+.forgotpw{
+
+  .info{
+    text-align: center;
+    font-size: 5em;
+    font-family: "VAG Rounded Std", Helvetica, sans-serif;
+    width: 85%;
+    color: #a9a9a9;
+    line-height: 1.6em;
+    letter-spacing: 0.02em;
+  }
+
+  input[name="forgotpw"]{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 10em;
+    border: none;
+    color: #cb6262;
+    padding: 20px;
+    background: url(../../assets/images/registreerbtn.png) no-repeat;
+    text-decoration: none;
+    width: 375px;
+    height: 198px;
+    float: left;
+    margin-top: 80px;
+
+  }
+
+  .button{
+    font-family: "Amatic", helvetica, sans-serif;
+    font-size: 11em;
+    border: none;
+    color: #74a8a7;
+    opacity: 0.8;
+    padding: 30px 0 0 110px;
+    background: url(../../assets/images/vorigebtn.png) no-repeat;
+    text-decoration: none;
+    width: 305px;
+    height: 208px;
+    display: block;
+    float: left;
+    margin: 80px 40px 0 0;
+  }
+
+  legend{
+    font-family: "Amatic SC", helvetica, sans-serif;
+    font-size: 11.1em;
+    text-align: center;
+  }
+
+  label{
+    font-family: "VAG Rounded Std", helvetica, sans-serif;
+    color: #74a8a7;
+    font-size: 6em;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    display:block;
+    margin: 50px 0 20px 0;
+
+  }
+
+  input[type="email"]{
+    height: 100px;
+    width: 75%;
+    padding: 0 20px;
+    font-size: 4.2em;
+    display: block;
+    border: 20px solid #bbe4e3;
+    font-size: 6em;
+    &:focus{
+      outline:none;
+    }
+  }
+
+
+  .mailicon{
+    background-color: #bbe4e3;
+    padding: 47px 10px 48px 25px;
+    height: 45px;
+    width: 59px;
+    display: block;
+    float: left;
+  }
+
+}
+

@@ -1,6 +1,23 @@
-Contenders
-<ul>
-{{#each users}}
-<li><a href="#detail/{{id}}">{{mother}} &amp; {{partner}}</a></li>
-{{/each}}
-</ul>
+<article class="contenders">
+    <header><h1>De Deelnemers</h1></header>
+    <p class="info">Klik op een koppel voor meer info</p>
+    <ul>
+        {{#each users}}
+        <li>
+            <span class="date">ma 23/03</span>
+            <a href="#detail/{{id}}">
+                <img src="http://www.placecage.com/gif/284/196" alt="" />
+                <p>{{mother}} &amp; {{partner}}</p>
+            </a>
+        </li>
+        {{/each}}
+        
+        <li >
+            <span class="date active">di 24/03</span>
+            <a href="#detail/{{id}}">
+                <img class="active" src="http://www.placecage.com/gif/284/196" alt="" />
+                <p class="active">{{mother}} &amp; {{partner}}</p>
+            </a>
+        </li>
+    </ul>
+</article>
