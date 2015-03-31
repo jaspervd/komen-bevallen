@@ -176,6 +176,21 @@ $app->get('/ratings/total/:group_id/?', function ($group_id) use ($ratingsDAO) {
     }
 });
 
+$app->post('/ratings/?', function () use ($app, $ratingsDAO) {
+    if (!empty($_SESSION['komen_bevallen']['user'])) {
+        $post = $app->request->post();
+        if (empty($post)) {
+            $post = (array)json_decode($app->request()->getBody());
+        }
+
+        //
+    }
+    else {
+        http_response_code(403);
+        exit;
+    }
+});
+
 // photos
 $app->get('/photos/:contender_id/?', function ($contender_id) use ($photosDAO) {
     if (!empty($_SESSION['komen_bevallen']['user'])) {

@@ -1,6 +1,7 @@
 <?php
 session_start();
-error_reporting(E_ALL);
+error_reporting(-1);
+ini_set("display_errors", 1);
 define("WWW_ROOT", dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR);
 
 require_once WWW_ROOT . 'classes' . DIRECTORY_SEPARATOR . 'Util.php';
